@@ -1,13 +1,19 @@
 package gabyshev.denis.forecast.city
 
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import com.readystatesoftware.systembartint.SystemBarTintManager
 import gabyshev.denis.forecast.R
+import kotlinx.android.synthetic.main.activity_city.*
+import kotlinx.android.synthetic.main.activity_city_item.*
 
 /**
  * Created by Borya on 22.07.2017.
@@ -19,12 +25,10 @@ class CityActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_city)
+
         transparentStatusBar()
 
-    }
-
-    private fun getCityList() {
-        CityUtils.instance()?.getCityList(this);
+        viewPager.adapter = CityViewPagerAdapter(supportFragmentManager)
     }
 
     private fun transparentStatusBar() {
@@ -39,4 +43,5 @@ class CityActivity : AppCompatActivity() {
         // enable navigation bar tint
         tintManager.setNavigationBarTintEnabled(true)
     }
+
 }
