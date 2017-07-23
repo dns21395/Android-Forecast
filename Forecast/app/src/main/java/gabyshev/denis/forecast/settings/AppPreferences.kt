@@ -20,12 +20,12 @@ class AppPreferences {
         }
     }
 
-    fun setCity(context: Context, city: String) {
+    fun setCity(context: Context, city: Int) {
         PreferenceManager.getDefaultSharedPreferences(context)
                 .edit()
-                .putString(CITY, city)
+                .putInt(CITY, city)
                 .apply()
     }
 
-    fun getCity(context: Context): String? = PreferenceManager.getDefaultSharedPreferences(context).getString(CITY, null)
+    fun getCity(context: Context): Int = PreferenceManager.getDefaultSharedPreferences(context).getInt(CITY, 0)
 }

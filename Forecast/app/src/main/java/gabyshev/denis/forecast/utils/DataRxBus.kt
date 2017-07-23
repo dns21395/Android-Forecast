@@ -5,3 +5,5 @@ package gabyshev.denis.forecast.utils
  */
 
 data class RxGetCity(val arrayCities: ArrayList<City>)
+
+class RxRefreshPage()

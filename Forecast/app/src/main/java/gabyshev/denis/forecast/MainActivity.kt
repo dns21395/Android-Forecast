@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if(AppPreferences.instance()?.getCity(this) == null) {
+        if(AppPreferences.instance()?.getCity(this) == 0) {
             startActivity(Intent(this, CityActivity::class.java))
             finish()
         }

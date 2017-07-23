@@ -11,6 +11,7 @@ import gabyshev.denis.forecast.R
 import gabyshev.denis.forecast.city.CityViewPagerController
 import gabyshev.denis.forecast.utils.RxBus
 import gabyshev.denis.forecast.utils.RxGetCity
+import gabyshev.denis.forecast.utils.RxRefreshPage
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_city_result.*
 import javax.inject.Inject
@@ -30,6 +31,7 @@ class ResultFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         (context.applicationContext as App).component.inject(this)
+
         viewPagerListener = activity as CityViewPagerController
 
         layoutManager = LinearLayoutManager(context)
@@ -51,6 +53,7 @@ class ResultFragment : Fragment() {
                             if(it is RxGetCity) {
                                 recyclerView.adapter = ResultAdapter(context, it.arrayCities)
                                 viewPagerListener.setPage(1)
+                                rxBus.send(RxRefreshPage())
                             }
                         }
         )

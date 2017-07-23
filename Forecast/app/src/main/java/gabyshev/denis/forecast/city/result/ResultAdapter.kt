@@ -1,10 +1,13 @@
 package gabyshev.denis.forecast.city.result
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import gabyshev.denis.forecast.MainActivity
 import gabyshev.denis.forecast.R
+import gabyshev.denis.forecast.settings.AppPreferences
 import gabyshev.denis.forecast.utils.City
 
 /**
@@ -20,5 +23,10 @@ class ResultAdapter(private val context: Context, private val arrayCities: Array
 
     override fun onBindViewHolder(holder: ResultHolder?, position: Int) {
         holder?.bind(arrayCities[position])
+
+        holder?.itemView?.setOnClickListener {
+            AppPreferences.instance()?.setCity(context, arrayCities[position].id.toInt())
+            context.startActivity(Intent(context, MainActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+        }
     }
 }

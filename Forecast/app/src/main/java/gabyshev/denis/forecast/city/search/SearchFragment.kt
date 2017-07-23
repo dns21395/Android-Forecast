@@ -1,15 +1,22 @@
 package gabyshev.denis.forecast.city.search
 
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import gabyshev.denis.forecast.App
 import gabyshev.denis.forecast.R
+import gabyshev.denis.forecast.utils.RxBus
+import gabyshev.denis.forecast.utils.RxRefreshPage
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_city_search.*
 import org.jetbrains.anko.support.v4.toast
+import javax.inject.Inject
 
 /**
  * Created by Borya on 22.07.2017.
@@ -19,12 +26,19 @@ class SearchFragment : Fragment() {
 
     lateinit var animator: ObjectAnimator
 
+    @Inject lateinit var rxBus: RxBus
+    private var subsriptions = CompositeDisposable()
+
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (context.applicationContext as App).component.inject(this)
 
         animator = ObjectAnimator.ofFloat(search, "rotation", 0f, 360f)
 
         setupViews()
+
+        rxListener()
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -48,7 +62,10 @@ class SearchFragment : Fragment() {
             return@setOnEditorActionListener false
         }
 
-        search.setOnClickListener { getCityList() }
+        search.setOnClickListener {
+            hideKeyboard()
+            getCityList()
+        }
     }
 
     private fun turn360SearchButton() {
@@ -58,7 +75,28 @@ class SearchFragment : Fragment() {
         animator.start()
     }
 
+    private fun rxListener() {
+        subsriptions.add(
+                rxBus.toObservable()
+                        .subscribe{
+                            if(it is RxRefreshPage) {
+                                stopTurn360SearchButton()
+                            }
+                        }
+        )
+    }
+
     fun stopTurn360SearchButton() {
-        animator.cancel()
+        animator.end()
+    }
+
+    override fun onDestroy() {
+        subsriptions.dispose()
+        super.onDestroy()
+    }
+
+    private fun hideKeyboard() {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(content.windowToken, 0);
     }
 }
