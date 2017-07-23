@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".city.CityActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>

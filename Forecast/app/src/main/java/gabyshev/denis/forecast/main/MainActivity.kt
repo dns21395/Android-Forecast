@@ -24,5 +24,6 @@ class MainActivity : AppCompatActivity() {
         ViewBuildHelper.transparentStatusBar(this)
 
         viewPager.adapter = WeatherFragmentAdapter(supportFragmentManager)
+        viewPager.offscreenPageLimit = 3
     }
 }

@@ -1,5 +1,6 @@
 package gabyshev.denis.forecast.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.AppCompatDrawableManager
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import gabyshev.denis.forecast.App
 import gabyshev.denis.forecast.R
+import gabyshev.denis.forecast.city.CityActivity
 import gabyshev.denis.forecast.utils.RxBus
 import gabyshev.denis.forecast.utils.RxTomorrow
 import gabyshev.denis.forecast.utils.ViewBuildHelper
@@ -33,6 +35,10 @@ class TomorrowFragment : Fragment() {
 
         (context.applicationContext as App).component.inject(this)
 
+        cityName.setOnClickListener {
+            startActivity(Intent(activity, CityActivity::class.java))
+        }
+
         rxListener()
     }
 
@@ -48,7 +54,7 @@ class TomorrowFragment : Fragment() {
                         weatherImage.setImageDrawable(AppCompatDrawableManager.get().getDrawable(context, ViewBuildHelper.getDrawable(it.icon)))
                         dayHour.text = getString(R.string.tomorrow)
                         temp.text = "${it.celsius}\u2103"
-                        description.text = it.description
+                        description.text = it.description.toUpperCase()
                     }
                 }
         )

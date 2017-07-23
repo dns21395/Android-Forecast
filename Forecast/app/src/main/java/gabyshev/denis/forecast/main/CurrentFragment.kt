@@ -1,5 +1,6 @@
 package gabyshev.denis.forecast.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.AppCompatDrawableManager
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import gabyshev.denis.forecast.App
 import gabyshev.denis.forecast.R
+import gabyshev.denis.forecast.city.CityActivity
 import gabyshev.denis.forecast.utils.ViewBuildHelper
 import gabyshev.denis.forecast.weather_api.RetrofitWeatherService
 import gabyshev.denis.forecast.weather_api.currentPojo.CurrentPojo
@@ -32,6 +34,10 @@ class CurrentFragment : Fragment() {
         Log.d(TAG, "Current Fragment onCreated")
 
         (context.applicationContext as App).component.inject(this)
+
+        cityName.setOnClickListener {
+            startActivity(Intent(activity, CityActivity::class.java))
+        }
 
         setValues()
     }
