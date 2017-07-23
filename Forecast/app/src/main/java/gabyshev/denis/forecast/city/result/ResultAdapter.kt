@@ -5,7 +5,7 @@ import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import gabyshev.denis.forecast.MainActivity
+import gabyshev.denis.forecast.main.MainActivity
 import gabyshev.denis.forecast.R
 import gabyshev.denis.forecast.settings.AppPreferences
 import gabyshev.denis.forecast.utils.City

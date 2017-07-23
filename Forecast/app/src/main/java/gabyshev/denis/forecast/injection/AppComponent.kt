@@ -2,10 +2,11 @@ package gabyshev.denis.forecast.injection
 
 import dagger.Component
 import gabyshev.denis.forecast.App
-import gabyshev.denis.forecast.MainActivity
+import gabyshev.denis.forecast.main.MainActivity
 import gabyshev.denis.forecast.city.result.ResultFragment
 import gabyshev.denis.forecast.city.search.SearchFragment
 import gabyshev.denis.forecast.city.search.SearchHelper
+import gabyshev.denis.forecast.main.CurrentFragment
 import javax.inject.Singleton
 
 /**
@@ -18,5 +19,6 @@ interface AppComponent {
     fun inject(cityUtils: SearchHelper)
     fun inject(resultFragment: ResultFragment)
     fun inject(searchFragment: SearchFragment)
-    fun inject(mainActivity: MainActivity)
+    fun inject(currentFragment: CurrentFragment)
+
 }
