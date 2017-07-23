@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.text.method.KeyListener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,14 +58,22 @@ class SearchFragment : Fragment() {
     private fun setupViews() {
         cityName.setOnEditorActionListener { textView, i, keyEvent ->
             if(i == EditorInfo.IME_ACTION_SEARCH) {
-                getCityList()
+                if(animator.isRunning) {
+                    toast(getString(R.string.search_city_already))
+                } else {
+                    getCityList()
+                }
             }
             return@setOnEditorActionListener false
         }
 
         search.setOnClickListener {
             hideKeyboard()
-            getCityList()
+            if(animator.isRunning) {
+                toast(getString(R.string.search_city_already))
+            } else {
+                getCityList()
+            }
         }
     }
 

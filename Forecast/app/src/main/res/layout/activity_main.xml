@@ -7,6 +7,7 @@
     tools:context="gabyshev.denis.forecast.main.MainActivity">
 
     <ImageView
+        android:id="@+id/background"
         android:src="@drawable/background_2"
         android:scaleType="centerCrop"
         android:layout_width="match_parent"
@@ -14,7 +15,7 @@
 
     <ImageView
         android:background="#000"
-        android:alpha="0.25"
+        android:alpha="0.4"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
