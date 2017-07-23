@@ -2,6 +2,7 @@ package gabyshev.denis.forecast.main.week
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import gabyshev.denis.forecast.App
 import gabyshev.denis.forecast.R
 import gabyshev.denis.forecast.weather_api.RetrofitWeatherService
 import gabyshev.denis.forecast.weather_api.weekPojo.WeekPojo
+import kotlinx.android.synthetic.main.fragment_main_week.*
 import javax.inject.Inject
 
 /**
@@ -26,6 +28,8 @@ class WeekFragment : Fragment() {
 
         (context.applicationContext as App).component.inject(this)
 
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
         setAdapter()
     }
 
@@ -36,7 +40,8 @@ class WeekFragment : Fragment() {
     private fun setAdapter() {
         retrofitWeatherService.getWeekWeather(context, object : RetrofitWeatherService.WeatherCallback<WeekPojo> {
             override fun onSuccess(t: WeekPojo) {
-                Log.d(TAG, "onSuccess : ${t.message}" )
+                Log.d(TAG, "onSuccess : ${t.cnt}" )
+                recyclerView.adapter = WeekAdapter(context, t)
             }
 
         })

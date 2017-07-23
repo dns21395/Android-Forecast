@@ -27,7 +27,7 @@ class RetrofitWeatherService(val weatherService: WeatherService) {
     }
 
     fun getWeekWeather(context: Context, callback: WeatherCallback<WeekPojo>) {
-        weatherService.getWeekWeather(AppPreferences.instance()!!.getCity(context).toLong(), APPID, "metric")
+        weatherService.getWeekWeather(AppPreferences.instance()!!.getCity(context).toLong(), APPID, "metric", 7)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(handleWeather<WeekPojo>(callback))

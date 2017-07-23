@@ -15,11 +15,12 @@ interface WeatherService {
             @Query("APPID") appId: String,
             @Query("units") units: String): Observable<CurrentPojo>
 
-    @GET("/data/2.5/forecast/")
+    @GET("/data/2.5/forecast/daily/")
     fun getWeekWeather(
             @Query("id") id: Long,
             @Query("APPID") appId: String,
-            @Query("units") units: String): Observable<WeekPojo>
+            @Query("units") units: String,
+            @Query("cnt") cnt: Int): Observable<WeekPojo>
 
 
 }
