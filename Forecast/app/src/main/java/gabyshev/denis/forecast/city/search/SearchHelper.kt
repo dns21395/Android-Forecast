@@ -91,7 +91,7 @@ class SearchHelper {
     fun getCityList(context: Context, city: String) {
         (context.applicationContext as App).component.inject(this)
 
-        var cities: ArrayList<City>? = null
+        var cities: ArrayList<City>?
 
         doAsync {
             cities = readJsonStream(loadJSONFromAsset(context), city)
