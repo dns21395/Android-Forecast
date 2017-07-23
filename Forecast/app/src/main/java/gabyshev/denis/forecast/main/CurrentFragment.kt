@@ -29,6 +29,8 @@ class CurrentFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.d(TAG, "Current Fragment onCreated")
+
         (context.applicationContext as App).component.inject(this)
 
         setValues()
@@ -41,9 +43,6 @@ class CurrentFragment : Fragment() {
     private fun setValues() {
         retrofitWeatherService.getCurrentWeather(context, object : RetrofitWeatherService.WeatherCallback<CurrentPojo> {
             override fun onSuccess(t: CurrentPojo) {
-                Log.d(TAG, "${t.weather!![0].icon} ${ViewBuildHelper.getDrawable(t.weather!![0].icon)}")
-
-
                 weatherImage.setImageDrawable(AppCompatDrawableManager.get().getDrawable(context, ViewBuildHelper.getDrawable(t.weather!![0].icon)))
                 cityName.text = t.name
                 dayHour.text = getDayHour()

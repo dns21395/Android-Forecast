@@ -23,7 +23,7 @@ class ResultFragment : Fragment() {
     private val TAG = "ResultFragment"
 
     @Inject lateinit var rxBus: RxBus
-    private var subsriptions = CompositeDisposable()
+    private var subscriptions = CompositeDisposable()
     private lateinit var viewPagerListener: CityViewPagerController
     private lateinit var layoutManager: LinearLayoutManager
 
@@ -47,7 +47,7 @@ class ResultFragment : Fragment() {
     }
 
     private fun rxListener() {
-        subsriptions.add(
+        subscriptions.add(
                 rxBus.toObservable()
                         .subscribe{
                             if(it is RxGetCity) {
@@ -60,7 +60,7 @@ class ResultFragment : Fragment() {
     }
 
     override fun onDestroy() {
-        subsriptions.dispose()
+        subscriptions.dispose()
         super.onDestroy()
     }
 }

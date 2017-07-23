@@ -2,4 +2,5 @@
     <string name="app_name">Forecast</string>
     <string name="search_city">Search city</string>
     <string name="empty_field">Field is empty. Type city name</string>
+    <string name="tomorrow">Tomorrow</string>
 </resources>

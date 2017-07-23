@@ -7,3 +7,5 @@ package gabyshev.denis.forecast.utils
 data class RxGetCity(val arrayCities: ArrayList<City>)
 
 class RxRefreshPage()
+
+data class RxTomorrow(val city: String, val icon: String, val celsius: Int, val description: String)

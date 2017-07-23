@@ -14,11 +14,10 @@ import kotlinx.android.synthetic.main.fragment_main_week_item.view.*
 class WeekHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
     private val TAG = "WeekHolder"
 
-    fun bind(day: ListDay) = with(itemView) {
+    fun bind(day: ListDay, dayWeek: String) = with(itemView) {
         resultParent.background.alpha = 40
         weatherImage.setImageDrawable(AppCompatDrawableManager.get().getDrawable(context, ViewBuildHelper.getDrawable(day.weather!![0].icon)))
         celsius.text = "${day.temp?.max?.toInt()}\u00B0/${day.temp?.min?.toInt()}\u00B0"
-
-        Log.d(TAG, "WEEK ${day.weather!![0].description}")
+        dayOfWeek.text = dayWeek
     }
 }
