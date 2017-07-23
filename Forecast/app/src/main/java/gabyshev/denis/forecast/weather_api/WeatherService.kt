@@ -1,6 +1,6 @@
 package gabyshev.denis.forecast.weather_api
 
-import gabyshev.denis.forecast.weather_api.currentWeatherPojo.CurrentWeatherPojo
+import gabyshev.denis.forecast.weather_api.currentPojo.CurrentPojo
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -12,5 +12,5 @@ interface WeatherService {
     fun getCurrentWeather(
             @Query("id") id: Long,
             @Query("APPID") appId: String,
-            @Query("units") units: String): Observable<CurrentWeatherPojo>
+            @Query("units") units: String): Observable<CurrentPojo>
 }

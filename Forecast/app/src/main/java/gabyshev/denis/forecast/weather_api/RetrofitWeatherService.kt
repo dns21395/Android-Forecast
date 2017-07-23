@@ -3,11 +3,9 @@ package gabyshev.denis.forecast.weather_api
 import android.content.Context
 import android.util.Log
 import gabyshev.denis.forecast.settings.AppPreferences
-import gabyshev.denis.forecast.weather_api.currentWeatherPojo.CurrentWeatherPojo
+import gabyshev.denis.forecast.weather_api.currentPojo.CurrentPojo
 import io.reactivex.Observer
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.annotations.NonNull
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
@@ -19,23 +17,23 @@ class RetrofitWeatherService(val weatherService: WeatherService) {
 
     private val APPID = "62401aa21c0e9cef83a8c13f1b85198c"
 
-    fun getCurrentWeather(context: Context, callback: CurrentWeatherCallback) {
+    fun getCurrentWeather(context: Context, callback: WeatherCallback<CurrentPojo>) {
         Log.d(TAG, "getCurerntWeather")
         weatherService.getCurrentWeather(AppPreferences.instance()!!.getCity(context).toLong(), APPID, "metric")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(handleCurrentWeather(callback))
+                .subscribe(handleWeather(callback))
     }
 
-    private fun handleCurrentWeather(callback: CurrentWeatherCallback): Observer<CurrentWeatherPojo> {
-        return object : Observer<CurrentWeatherPojo> {
+    private fun <T> handleWeather(callback: WeatherCallback<T>): Observer<T> {
+        return object : Observer<T> {
             override fun onComplete() {
             }
 
             override fun onSubscribe(d: Disposable) {
             }
 
-            override fun onNext(t: CurrentWeatherPojo) {
+            override fun onNext(t: T) {
                 callback.onSuccess(t)
             }
 
@@ -46,7 +44,9 @@ class RetrofitWeatherService(val weatherService: WeatherService) {
         }
     }
 
-    interface CurrentWeatherCallback {
-        fun onSuccess(t: CurrentWeatherPojo);
+    interface WeatherCallback<T> {
+        fun onSuccess(t: T);
     }
 }
+
+

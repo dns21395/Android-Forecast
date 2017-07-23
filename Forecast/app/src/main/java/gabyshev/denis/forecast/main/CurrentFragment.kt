@@ -11,7 +11,7 @@ import gabyshev.denis.forecast.App
 import gabyshev.denis.forecast.R
 import gabyshev.denis.forecast.utils.ViewBuildHelper
 import gabyshev.denis.forecast.weather_api.RetrofitWeatherService
-import gabyshev.denis.forecast.weather_api.currentWeatherPojo.CurrentWeatherPojo
+import gabyshev.denis.forecast.weather_api.currentPojo.CurrentPojo
 import kotlinx.android.synthetic.main.fragment_main_current.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,8 +39,8 @@ class CurrentFragment : Fragment() {
     }
 
     private fun setValues() {
-        retrofitWeatherService.getCurrentWeather(context, object : RetrofitWeatherService.CurrentWeatherCallback {
-            override fun onSuccess(t: CurrentWeatherPojo) {
+        retrofitWeatherService.getCurrentWeather(context, object : RetrofitWeatherService.WeatherCallback<CurrentPojo> {
+            override fun onSuccess(t: CurrentPojo) {
                 Log.d(TAG, "${t.weather!![0].icon} ${ViewBuildHelper.getDrawable(t.weather!![0].icon)}")
 
 
