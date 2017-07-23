@@ -7,6 +7,7 @@ import gabyshev.denis.forecast.city.result.ResultFragment
 import gabyshev.denis.forecast.city.search.SearchFragment
 import gabyshev.denis.forecast.city.search.SearchHelper
 import gabyshev.denis.forecast.main.CurrentFragment
+import gabyshev.denis.forecast.main.week.WeekFragment
 import javax.inject.Singleton
 
 /**
@@ -20,5 +21,6 @@ interface AppComponent {
     fun inject(resultFragment: ResultFragment)
     fun inject(searchFragment: SearchFragment)
     fun inject(currentFragment: CurrentFragment)
+    fun inject(weekFragment: WeekFragment)
 
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import gabyshev.denis.forecast.settings.AppPreferences
 import gabyshev.denis.forecast.weather_api.currentPojo.CurrentPojo
+import gabyshev.denis.forecast.weather_api.weekPojo.WeekPojo
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -23,6 +24,13 @@ class RetrofitWeatherService(val weatherService: WeatherService) {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(handleWeather(callback))
+    }
+
+    fun getWeekWeather(context: Context, callback: WeatherCallback<WeekPojo>) {
+        weatherService.getWeekWeather(AppPreferences.instance()!!.getCity(context).toLong(), APPID, "metric")
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(handleWeather<WeekPojo>(callback))
     }
 
     private fun <T> handleWeather(callback: WeatherCallback<T>): Observer<T> {

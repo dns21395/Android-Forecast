@@ -1,6 +1,7 @@
 package gabyshev.denis.forecast.weather_api
 
 import gabyshev.denis.forecast.weather_api.currentPojo.CurrentPojo
+import gabyshev.denis.forecast.weather_api.weekPojo.WeekPojo
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -13,4 +14,12 @@ interface WeatherService {
             @Query("id") id: Long,
             @Query("APPID") appId: String,
             @Query("units") units: String): Observable<CurrentPojo>
+
+    @GET("/data/2.5/forecast/")
+    fun getWeekWeather(
+            @Query("id") id: Long,
+            @Query("APPID") appId: String,
+            @Query("units") units: String): Observable<WeekPojo>
+
+
 }
