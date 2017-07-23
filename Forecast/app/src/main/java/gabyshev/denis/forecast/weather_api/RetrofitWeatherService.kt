@@ -19,15 +19,15 @@ class RetrofitWeatherService(val weatherService: WeatherService) {
 
     private val APPID = "62401aa21c0e9cef83a8c13f1b85198c"
 
-    fun getCurrentWeather(context: Context) {
+    fun getCurrentWeather(context: Context, callback: CurrentWeatherCallback) {
         Log.d(TAG, "getCurerntWeather")
-        weatherService.getCurrentWeather(AppPreferences.instance()!!.getCity(context).toLong(), APPID)
+        weatherService.getCurrentWeather(AppPreferences.instance()!!.getCity(context).toLong(), APPID, "metric")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(handleCurrentWeather())
+                .subscribe(handleCurrentWeather(callback))
     }
 
-    private fun handleCurrentWeather(): Observer<CurrentWeatherPojo> {
+    private fun handleCurrentWeather(callback: CurrentWeatherCallback): Observer<CurrentWeatherPojo> {
         return object : Observer<CurrentWeatherPojo> {
             override fun onComplete() {
             }
@@ -36,7 +36,7 @@ class RetrofitWeatherService(val weatherService: WeatherService) {
             }
 
             override fun onNext(t: CurrentWeatherPojo) {
-                Log.d(TAG, "response : ${t.name} ${t.clouds}")
+                callback.onSuccess(t)
             }
 
             override fun onError(e: Throwable) {
@@ -44,5 +44,9 @@ class RetrofitWeatherService(val weatherService: WeatherService) {
             }
 
         }
+    }
+
+    interface CurrentWeatherCallback {
+        fun onSuccess(t: CurrentWeatherPojo);
     }
 }

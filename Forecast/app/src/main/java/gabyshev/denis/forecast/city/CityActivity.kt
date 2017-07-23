@@ -8,6 +8,7 @@ import android.view.View
 import com.readystatesoftware.systembartint.SystemBarTintManager
 import gabyshev.denis.forecast.R
 import gabyshev.denis.forecast.city.viewpager.CityViewPagerAdapter
+import gabyshev.denis.forecast.utils.ViewBuildHelper
 import kotlinx.android.synthetic.main.activity_city.*
 
 /**
@@ -28,25 +29,12 @@ class CityActivity : AppCompatActivity(), CityViewPagerController {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_city)
 
-        transparentStatusBar()
+        ViewBuildHelper.transparentStatusBar(this)
 
         viewPager.offscreenPageLimit = 2
         viewPagerAdapter = CityViewPagerAdapter(supportFragmentManager)
         viewPager.adapter = viewPagerAdapter
 
-    }
-
-    private fun transparentStatusBar() {
-        if (Build.VERSION.SDK_INT >= 21) {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-            window.statusBarColor = Color.TRANSPARENT
-        }
-
-        val tintManager = SystemBarTintManager(this)
-        // enable status bar tint
-        tintManager.isStatusBarTintEnabled = true
-        // enable navigation bar tint
-        tintManager.setNavigationBarTintEnabled(true)
     }
 
     override fun onBackPressed() {

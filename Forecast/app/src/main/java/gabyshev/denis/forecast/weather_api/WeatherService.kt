@@ -11,5 +11,6 @@ interface WeatherService {
     @GET("/data/2.5/weather/")
     fun getCurrentWeather(
             @Query("id") id: Long,
-            @Query("APPID") appId: String): Observable<CurrentWeatherPojo>
+            @Query("APPID") appId: String,
+            @Query("units") units: String): Observable<CurrentWeatherPojo>
 }

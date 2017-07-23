@@ -1,18 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#325159"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="gabyshev.denis.forecast.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:src="@drawable/background_2"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
+    <ImageView
+        android:background="#000"
+        android:alpha="0.25"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+    <ImageButton
+        android:id="@+id/menu"
+        android:tint="@color/activity_main_icon"
+        android:padding="32dp"
+        android:background="@android:color/transparent"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/city_day_hour_container"
+        android:layout_below="@id/menu"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/activity_main_text"
+            android:id="@+id/cityName"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            tools:text="YAKUTSK"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="@color/activity_main_text"
+            android:id="@+id/dayHour"
+            tools:text="TUESDAY, 11:35 AM"
+            android:gravity="center_horizontal"
+            android:fontFamily="sans-serif-thin"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <ImageView
+        android:padding="16dp"
+        android:id="@+id/weatherImage"
+        android:layout_below="@id/city_day_hour_container"
+        android:layout_centerHorizontal="true"
+        tools:src="@drawable/d_clear_sky"
+        android:layout_width="160dp"
+        android:layout_height="160dp" />
+
+    <TextView
+        android:id="@+id/temp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/activity_main_text"
+        tools:text="66 \u2103"
+        android:gravity="center_horizontal"
+        android:fontFamily="sans-serif-light"
+        android:textSize="44sp"
+        android:layout_below="@id/weatherImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_below="@id/temp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/activity_main_text"
+        tools:text="SUNNY AND RAIN"
+        android:gravity="center_horizontal"
+        android:fontFamily="sans-serif-light"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
