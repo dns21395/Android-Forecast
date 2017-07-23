@@ -1,26 +1,32 @@
-package gabyshev.denis.forecast.city
+package gabyshev.denis.forecast.city.search
 
 import android.content.Context
 import android.content.res.AssetManager
 import android.util.JsonReader
-import android.util.Log
+import gabyshev.denis.forecast.App
 import gabyshev.denis.forecast.utils.City
-import java.io.BufferedReader
+import gabyshev.denis.forecast.utils.RxBus
+import gabyshev.denis.forecast.utils.RxGetCity
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import java.io.InputStream
 import java.io.InputStreamReader
+import javax.inject.Inject
 
 /**
  * Created by Borya on 22.07.2017.
  */
-class CityUtils {
-    private val TAG = "CityUtils";
+class SearchHelper {
+    private val TAG = "SearchHelper";
+
+    @Inject lateinit var rxBus: RxBus
 
     companion object {
-        private var instance: CityUtils? = null
+        private var instance: SearchHelper? = null
 
-        fun instance(): CityUtils? {
+        fun instance(): SearchHelper? {
             if(instance == null) {
-                instance = CityUtils()
+                instance = SearchHelper()
             }
             return instance
         }
@@ -33,24 +39,24 @@ class CityUtils {
         return inputStream
     }
 
-    fun readJsonStream(input: InputStream): ArrayList<City> {
+    private fun readJsonStream(input: InputStream, city: String): ArrayList<City> {
         val reader: JsonReader = JsonReader(InputStreamReader(input, "UTF-8"))
         try {
-            return readMessageArray(reader)
+            return readMessageArray(reader, city)
         } finally {
             reader.close()
         }
     }
 
-    fun readMessageArray(reader: JsonReader): ArrayList<City> {
+    private fun readMessageArray(reader: JsonReader, city: String): ArrayList<City> {
         val messages = ArrayList<City>()
 
         reader.beginArray()
         while(reader.hasNext()) {
-            val city: City = readMessage(reader);
+            val value: City = readMessage(reader);
 
-            if(city.name!!.equals("TOKYO", true)) {
-                messages.add(city)
+            if(value.name!!.equals(city, true)) {
+                messages.add(value)
             }
         }
         reader.endArray()
@@ -58,7 +64,7 @@ class CityUtils {
         return messages
     }
 
-    fun readMessage(reader: JsonReader): City {
+    private fun readMessage(reader: JsonReader): City {
         var id: Long = -1
         var name: String? = null
         var country: String? = null
@@ -82,9 +88,19 @@ class CityUtils {
         return City(id, name, country)
     }
 
-    fun getCityList(context: Context) {
-        Log.d(TAG, "getCityList")
-        readJsonStream(loadJSONFromAsset(context))
+    fun getCityList(context: Context, city: String) {
+        (context.applicationContext as App).component.inject(this)
+
+        var cities: ArrayList<City>? = null
+
+        doAsync {
+            cities = readJsonStream(loadJSONFromAsset(context), city)
+            uiThread {
+                rxBus.send(RxGetCity(cities!!))
+            }
+
+        }
+
     }
 
 

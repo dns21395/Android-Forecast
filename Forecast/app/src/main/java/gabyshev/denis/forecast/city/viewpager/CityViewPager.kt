@@ -1,4 +1,4 @@
-package gabyshev.denis.forecast.city
+package gabyshev.denis.forecast.city.viewpager
 
 import android.content.Context
 import android.support.v4.view.ViewPager
@@ -19,4 +19,5 @@ class CityViewPager : ViewPager {
     override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
         return false
     }
+
 }

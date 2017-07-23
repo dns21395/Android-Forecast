@@ -1,0 +1,26 @@
+<RelativeLayout
+    android:id="@+id/resultParent"
+    android:background="#FFFFFF"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:background="@android:color/transparent"
+        android:textColor="#fff"
+        android:id="@+id/cityCountryName"
+        android:layout_centerInParent="true"
+        tools:text="Moscow, RU"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

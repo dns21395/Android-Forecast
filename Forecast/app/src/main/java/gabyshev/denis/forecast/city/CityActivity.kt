@@ -1,25 +1,27 @@
 package gabyshev.denis.forecast.city
 
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
-import android.view.inputmethod.EditorInfo
 import com.readystatesoftware.systembartint.SystemBarTintManager
 import gabyshev.denis.forecast.R
+import gabyshev.denis.forecast.city.viewpager.CityViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_city.*
-import kotlinx.android.synthetic.main.activity_city_item.*
 
 /**
  * Created by Borya on 22.07.2017.
  */
 
-class CityActivity : AppCompatActivity() {
+class CityActivity : AppCompatActivity(), CityViewPagerController {
+    override fun setPage(page: Int) {
+        viewPager.currentItem = page
+    }
+
+    private lateinit var viewPagerAdapter: CityViewPagerAdapter
+
+
     private val TAG = "CityActivity";
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +30,10 @@ class CityActivity : AppCompatActivity() {
 
         transparentStatusBar()
 
-        viewPager.adapter = CityViewPagerAdapter(supportFragmentManager)
+        viewPager.offscreenPageLimit = 2
+        viewPagerAdapter = CityViewPagerAdapter(supportFragmentManager)
+        viewPager.adapter = viewPagerAdapter
+
     }
 
     private fun transparentStatusBar() {
@@ -42,6 +47,15 @@ class CityActivity : AppCompatActivity() {
         tintManager.isStatusBarTintEnabled = true
         // enable navigation bar tint
         tintManager.setNavigationBarTintEnabled(true)
+    }
+
+    override fun onBackPressed() {
+        if(viewPager.currentItem == 1) {
+            viewPager.currentItem = 0
+
+        } else {
+            super.onBackPressed()
+        }
     }
 
 }

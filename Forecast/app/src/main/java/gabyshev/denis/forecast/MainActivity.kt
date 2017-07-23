@@ -15,8 +15,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if(AppPreferences.instance()?.getCity(this) == null) {
-            Log.d(TAG, "start activity CityActivity.java")
             startActivity(Intent(this, CityActivity::class.java))
+            finish()
         }
     }
 
