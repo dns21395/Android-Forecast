@@ -20,4 +20,4 @@ Current weather   |  Tomorrow weather
 ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather1.png)  |  ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather2.png)
 
 Weeky Forecast
-![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather3.png) 
+<p align="center"><img src="https://raw.githubusercontent.com/dns21395/MusicPlayer/master/ReadmeFiles/weather3.png" width="360" /></p>
