@@ -15,9 +15,6 @@ Weather Pager
 * To switch between pages use swipe
 * To change the city tap city name
 
-Current weather   |  Tomorrow weather
-:-------------------------:|:-------------------------:
-![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather1.png)  |  ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather2.png)
-
-Weeky Forecast
-<p align="center"><img src="https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather3.png" width="360" /></p>
+Current weather   |  Tomorrow weather | Weeky Forecast
+:-------------------------:|:-------------------------:|:-------------------------:
+![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather1.png)  |  ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather2.png) | ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather3.png
