@@ -17,7 +17,10 @@ class MainActivity : AppCompatActivity() {
     val arrayBackgrounds = arrayOf(R.drawable.background_1,
             R.drawable.background_2,
             R.drawable.background_3,
-            R.drawable.background_4)
+            R.drawable.background_4,
+            R.drawable.background_5,
+            R.drawable.background_6,
+            R.drawable.background_7)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
