@@ -1,5 +1,4 @@
 # Forecast-Kotlin-Example
-Forecast
 An forecast app example that written in Kotlin. For network operations was used Dagger2, RxJava and Retrofit
 
 Features
