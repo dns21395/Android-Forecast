@@ -11,7 +11,7 @@ Searching city    |  Selecting city
 :-------------------------:|:-------------------------:
 ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/city1.png)  |  ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/city2.png)
 
-Weather Pager.
+Weather Pager
 * To switch between pages use swipe
 * To change the city tap city name
 
