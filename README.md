@@ -17,4 +17,4 @@ Weather Pager
 
 Current weather   |  Tomorrow weather | Weeky Forecast
 :-------------------------:|:-------------------------:|:-------------------------:
-![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather1.png)  |  ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather2.png) | ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather3.png
+![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather1.png)  |  ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather2.png) | ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather3.png)
