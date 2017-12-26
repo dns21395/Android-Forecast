@@ -3,8 +3,7 @@
     android:background="#325159"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="gabyshev.denis.forecast.main.MainActivity">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/background"
