@@ -1,5 +1,9 @@
-# Forecast-Kotlin-Example
+# Forecast-MVP-Dagger
 An forecast app example that written in Kotlin. For network operations was used Dagger2, RxJava and Retrofit
+
+<p align="center"><img src="https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/intro.png" width="360" /></p>
+
+
 
 Features
 -----
@@ -17,3 +21,9 @@ Weather Pager
 Current weather   |  Tomorrow weather | Weeky Forecast
 :-------------------------:|:-------------------------:|:-------------------------:
 ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather1.png)  |  ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather2.png) | ![](https://raw.githubusercontent.com/dns21395/Forecast-Kotlin-Example/master/ReadmeFiles/weather3.png)
+
+Resources
+-----
+* Dagger2
+* Retrofit
+* Kotlin
