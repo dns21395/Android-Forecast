@@ -7,14 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import gabyshev.denis.forecast.R
-import gabyshev.denis.forecast.data.DataManager
 import gabyshev.denis.forecast.data.city_list.model.City
 import gabyshev.denis.forecast.di.ActivityContext
-import gabyshev.denis.forecast.di.ApplicationContext
-import gabyshev.denis.forecast.di.PerActivity
 import gabyshev.denis.forecast.di.PerFragment
 
-import kotlinx.android.synthetic.main.fragment_city_result_holder_2.view.*
+import kotlinx.android.synthetic.main.fragment_city_result_holder.view.*
 import javax.inject.Inject
 
 
@@ -38,7 +35,7 @@ class ResultCityAdapter
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ResultCityViewHolder =
-            ResultCityViewHolder(LayoutInflater.from(context).inflate(R.layout.fragment_city_result_holder_2, parent, false))
+            ResultCityViewHolder(LayoutInflater.from(context).inflate(R.layout.fragment_city_result_holder, parent, false))
 
     fun updateCities(cities: ArrayList<City>) {
         Log.d(TAG, "updateCities : $cities")
