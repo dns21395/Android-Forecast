@@ -20,10 +20,11 @@ class AppPreferencesHelper
 
     private val prefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
 
-    override fun setCity(city: Long) = prefs.edit().putLong(PREF_CITY, city).apply()
+    override var city : Long
+        get() = prefs.getLong(PREF_CITY, -1)
 
-    override fun getCity(): Long =
-            prefs.getLong(PREF_CITY, -1)
-
+        set(value) {
+            prefs.edit().putLong(PREF_CITY, city).apply()
+        }
 
 }

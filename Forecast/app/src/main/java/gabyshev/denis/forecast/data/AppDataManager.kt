@@ -15,7 +15,11 @@ class AppDataManager
                         private val preferencesHelper: PreferencesHelper)
     : DataManager {
 
-    override fun setCity(city: Long) = preferencesHelper.setCity(city)
-    override fun getCity(): Long = preferencesHelper.getCity()
+    override var city : Long
+        get() = preferencesHelper.city
+
+        set(value) {
+            preferencesHelper.city = city
+        }
 
 }
