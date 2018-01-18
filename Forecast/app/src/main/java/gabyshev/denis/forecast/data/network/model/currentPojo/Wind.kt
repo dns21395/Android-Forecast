@@ -7,9 +7,9 @@ class Wind {
 
     @SerializedName("speed")
     @Expose
-    var speed: Double? = null
+    val speed: Double? = null
     @SerializedName("deg")
     @Expose
-    var deg: Double? = null
+    val deg: Double? = null
 
 }

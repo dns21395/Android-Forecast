@@ -7,15 +7,15 @@ class Sys {
 
     @SerializedName("message")
     @Expose
-    var message: Double? = null
+    val message: Double? = null
     @SerializedName("country")
     @Expose
-    var country: String? = null
+    val country: String? = null
     @SerializedName("sunrise")
     @Expose
-    var sunrise: Int? = null
+    val sunrise: Int? = null
     @SerializedName("sunset")
     @Expose
-    var sunset: Int? = null
+    val sunset: Int? = null
 
 }

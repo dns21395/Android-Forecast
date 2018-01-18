@@ -7,30 +7,30 @@ class ListDay {
 
     @SerializedName("dt")
     @Expose
-    var dt: Int? = null
+    val dt: Int? = null
     @SerializedName("temp")
     @Expose
-    var temp: Temp? = null
+    val temp: Temp? = null
     @SerializedName("pressure")
     @Expose
-    var pressure: Double? = null
+    val pressure: Double? = null
     @SerializedName("humidity")
     @Expose
-    var humidity: Int? = null
+    val humidity: Int? = null
     @SerializedName("weather")
     @Expose
-    var weather: List<Weather>? = null
+    val weather: List<Weather>? = null
     @SerializedName("speed")
     @Expose
-    var speed: Double? = null
+    val speed: Double? = null
     @SerializedName("deg")
     @Expose
-    var deg: Int? = null
+    val deg: Int? = null
     @SerializedName("clouds")
     @Expose
-    var clouds: Int? = null
+    val clouds: Int? = null
     @SerializedName("rain")
     @Expose
-    var rain: Double? = null
+    val rain: Double? = null
 
 }

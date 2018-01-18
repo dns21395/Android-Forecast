@@ -7,6 +7,6 @@ class Clouds {
 
     @SerializedName("all")
     @Expose
-    var all: Int? = null
+    val all: Int? = null
 
 }
