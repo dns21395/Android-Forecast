@@ -8,18 +8,18 @@ class WeekPojo {
 
     @SerializedName("city")
     @Expose
-    var city: City? = null
+    val city: City? = null
     @SerializedName("cod")
     @Expose
-    var cod: String? = null
+    val cod: String? = null
     @SerializedName("message")
     @Expose
-    var message: Double? = null
+    val message: Double? = null
     @SerializedName("cnt")
     @Expose
-    var cnt: Int? = null
+    val cnt: Int? = null
     @SerializedName("list")
     @Expose
-    var list: List<ListDay>? = null
+    val list: List<ListDay>? = null
 
 }

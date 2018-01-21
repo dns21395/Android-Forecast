@@ -20,7 +20,7 @@ class ResultCityPresenter<V: ResultCityMvpView>
     : BasePresenter<V>(context, dataManager, compositeDisposable), ResultCityMvpPresenter<V> {
     override fun updateUserCity(city: Long) {
         compositeDisposable.add(Observable.fromCallable {
-            dataManager.setCity(city)
+            dataManager.city = city
         }       .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe {
             mvpView?.openSplashActivity()

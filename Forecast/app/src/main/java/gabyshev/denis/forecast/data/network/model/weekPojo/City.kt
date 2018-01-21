@@ -9,18 +9,18 @@ class City {
 
     @SerializedName("id")
     @Expose
-    var id: Int? = null
+    val id: Int? = null
     @SerializedName("name")
     @Expose
-    var name: String? = null
+    val name: String? = null
     @SerializedName("coord")
     @Expose
-    var coord: Coord? = null
+    val coord: Coord? = null
     @SerializedName("country")
     @Expose
-    var country: String? = null
+    val country: String? = null
     @SerializedName("population")
     @Expose
-    var population: Int? = null
+    val population: Int? = null
 
 }

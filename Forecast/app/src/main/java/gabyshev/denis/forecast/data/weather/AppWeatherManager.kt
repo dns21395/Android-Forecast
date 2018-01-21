@@ -53,7 +53,7 @@ class AppWeatherManager @Inject constructor(): WeatherManager {
 }
 
 data class DayWeather(
-        var city: String? = "NO CITY",
+        val city: String? = "NO CITY",
         val temperature: String? = "NO TEMPERATURE",
         val description: String? = "NO DESCRIPTION",
         val drawable: Int? = null)

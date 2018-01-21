@@ -7,36 +7,36 @@ class CurrentPojo {
 
     @SerializedName("coord")
     @Expose
-    var coord: Coord? = null
+    val coord: Coord? = null
     @SerializedName("weather")
     @Expose
-    var weather: List<Weather>? = null
+    val weather: List<Weather>? = null
     @SerializedName("base")
     @Expose
-    var base: String? = null
+    val base: String? = null
     @SerializedName("main")
     @Expose
-    var main: Main? = null
+    val main: Main? = null
     @SerializedName("wind")
     @Expose
-    var wind: Wind? = null
+    val wind: Wind? = null
     @SerializedName("clouds")
     @Expose
-    var clouds: Clouds? = null
+    val clouds: Clouds? = null
     @SerializedName("dt")
     @Expose
-    var dt: Int? = null
+    val dt: Int? = null
     @SerializedName("sys")
     @Expose
-    var sys: Sys? = null
+    val sys: Sys? = null
     @SerializedName("id")
     @Expose
-    var id: Int? = null
+    val id: Int? = null
     @SerializedName("name")
     @Expose
-    var name: String? = null
+    val name: String? = null
     @SerializedName("cod")
     @Expose
-    var cod: Int? = null
+    val cod: Int? = null
 
 }

@@ -7,21 +7,21 @@ class Temp {
 
     @SerializedName("day")
     @Expose
-    var day: Double? = null
+    val day: Double? = null
     @SerializedName("min")
     @Expose
-    var min: Double? = null
+    val min: Double? = null
     @SerializedName("max")
     @Expose
-    var max: Double? = null
+    val max: Double? = null
     @SerializedName("night")
     @Expose
-    var night: Double? = null
+    val night: Double? = null
     @SerializedName("eve")
     @Expose
-    var eve: Double? = null
+    val eve: Double? = null
     @SerializedName("morn")
     @Expose
-    var morn: Double? = null
+    val morn: Double? = null
 
 }
