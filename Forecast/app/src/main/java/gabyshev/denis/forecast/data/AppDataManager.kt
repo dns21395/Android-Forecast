@@ -19,7 +19,7 @@ class AppDataManager
         get() = preferencesHelper.city
 
         set(value) {
-            preferencesHelper.city = city
+            preferencesHelper.city = value
         }
 
 }

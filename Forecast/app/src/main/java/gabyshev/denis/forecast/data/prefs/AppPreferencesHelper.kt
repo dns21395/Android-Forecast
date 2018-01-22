@@ -24,7 +24,7 @@ class AppPreferencesHelper
         get() = prefs.getLong(PREF_CITY, -1)
 
         set(value) {
-            prefs.edit().putLong(PREF_CITY, city).apply()
+            prefs.edit().putLong(PREF_CITY, value).apply()
         }
 
 }
