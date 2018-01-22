@@ -28,7 +28,7 @@ class SplashPresenter<V: SplashMvpView>
     override fun onAttach(mvpView: V) {
         super.onAttach(mvpView)
 
-        when(dataManager.city) {
+        when(dataManager.getCity()) {
             -1L -> mvpView.openSelectCityActivity()
             else -> {
                 var countSuccessOperations = 0

@@ -14,12 +14,19 @@ class AppDataManager
     @Inject constructor(@ApplicationContext private val context: Context,
                         private val preferencesHelper: PreferencesHelper)
     : DataManager {
+    override fun setCity(city: Long) {
+        preferencesHelper.setCity(city)
+    }
 
-    override var city : Long
-        get() = preferencesHelper.city
+    override fun getCity(): Long = preferencesHelper.getCity()
 
-        set(value) {
-            preferencesHelper.city = city
-        }
+//    override var city : Long
+//        get() = preferencesHelper.city
+//
+//        set(value) {
+//            preferencesHelper.city = city
+//        }
+
+
 
 }
