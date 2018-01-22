@@ -11,7 +11,7 @@ Used Resources
 * [SystemBarTint](https://github.com/jgilfelt/SystemBarTint) <br/>
 *  Backgrounds provided by [pexels.com](https://www.pexels.com) <br/>
 *  Icons provided by [materialdesignicons.com](https://materialdesignicons.com) <br/>
-*  Weather API provided by [materialdesignicons.com](https://www.accuweather.com) <br/>
+*  Weather API provided by [https://www.accuweather.com](https://www.accuweather.com) <br/>
 *  [Weather Icons](https://dribbble.com/shots/1706310-Freebie-Weather-Icons) provided by [GraphBerry](https://dribbble.com/GraphBerry) <br/>
 
 Features
