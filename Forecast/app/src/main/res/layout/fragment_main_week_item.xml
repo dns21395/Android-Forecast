@@ -1,4 +1,4 @@
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/resultParent"
     android:background="#FFFFFF"
     android:foreground="?attr/selectableItemBackgroundBorderless"
@@ -52,4 +52,4 @@
         android:layout_marginEnd="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

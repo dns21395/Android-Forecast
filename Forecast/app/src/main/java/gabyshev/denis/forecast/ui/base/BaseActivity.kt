@@ -1,7 +1,7 @@
 package gabyshev.denis.forecast.ui.base
 
 import android.graphics.Color
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import com.readystatesoftware.systembartint.SystemBarTintManager
 import gabyshev.denis.forecast.di.component.ActivityComponent
