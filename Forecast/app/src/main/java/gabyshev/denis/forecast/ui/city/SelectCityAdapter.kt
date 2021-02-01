@@ -1,8 +1,8 @@
 package gabyshev.denis.forecast.ui.city
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import gabyshev.denis.forecast.ui.city.result.ResultCityFragment
 import gabyshev.denis.forecast.ui.city.search.SearchCityFragment
 

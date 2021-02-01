@@ -1,8 +1,8 @@
 package gabyshev.denis.forecast.di.module
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.Module
 import dagger.Provides
 import gabyshev.denis.forecast.data.city_list.AppCityManager
@@ -58,7 +58,8 @@ class ActivityModule(val activity: AppCompatActivity) {
     fun provideCityManager(appCityManager: AppCityManager): CityManager = appCityManager
 
     @Provides
-    fun provideLinearLayoutManager(@ActivityContext context: Context): LinearLayoutManager = LinearLayoutManager(context)
+    fun provideLinearLayoutManager(@ActivityContext context: Context): LinearLayoutManager =
+        LinearLayoutManager(context)
 
     // Activity
 

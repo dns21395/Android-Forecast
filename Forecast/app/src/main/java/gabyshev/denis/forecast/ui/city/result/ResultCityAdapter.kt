@@ -1,7 +1,7 @@
 package gabyshev.denis.forecast.ui.city.result
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -34,8 +34,8 @@ class ResultCityAdapter
         holder.bind(position)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ResultCityViewHolder =
-            ResultCityViewHolder(LayoutInflater.from(context).inflate(R.layout.fragment_city_result_holder, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultCityViewHolder =
+        ResultCityViewHolder(LayoutInflater.from(context).inflate(R.layout.fragment_city_result_holder, parent, false))
 
     fun updateCities(cities: ArrayList<City>) {
         Log.d(TAG, "updateCities : $cities")

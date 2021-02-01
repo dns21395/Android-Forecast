@@ -3,7 +3,7 @@ package gabyshev.denis.forecast.ui.base
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.View
 import gabyshev.denis.forecast.di.component.ActivityComponent
 import gabyshev.denis.forecast.utils.KeyboardUtils

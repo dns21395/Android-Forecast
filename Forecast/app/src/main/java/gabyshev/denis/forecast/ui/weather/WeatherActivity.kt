@@ -3,7 +3,7 @@ package gabyshev.denis.forecast.ui.weather
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import gabyshev.denis.forecast.R
 import gabyshev.denis.forecast.ui.base.BaseActivity
 import gabyshev.denis.forecast.ui.city.SelectCityActivity
