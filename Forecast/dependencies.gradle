@@ -1,0 +1,58 @@
+/* Dependencies versions */
+
+def versions = [:]
+
+versions.compose = '1.2.0'
+versions.compose_activity = '1.3.1'
+versions.compose_material3 = '1.0.0-alpha13'
+
+versions.coroutines = '1.6.4'
+
+versions.dagger = '2.40.5'
+
+versions.lifecycle = '2.5.0'
+
+versions.modo = '0.6.4'
+
+versions.room = '2.4.2'
+
+/* Dependencies */
+
+ext.deps = [:]
+
+def androidx = [:]
+androidx.core_ktx = "androidx.core:core-ktx:$versions.core_ktx"
+deps.androidx = androidx
+
+def coroutines = [:]
+coroutines.coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
+deps.coroutines = coroutines
+
+def compose = [:]
+compose.activity = "androidx.activity:activity-compose:$versions.compose_activity"
+compose.material = "androidx.compose.material:material:$versions.compose"
+compose.material3 = "androidx.compose.material3:material3:$versions.compose_material3"
+compose.ui = "androidx.compose.ui:ui:$versions.compose"
+compose.ui_tooling =  "androidx.compose.ui:ui-tooling:$versions.compose"
+compose.ui_tooling_preview = "androidx.compose.ui:ui-tooling-preview:$versions.compose"
+deps.compose = compose
+
+def dagger = [:]
+dagger.dagger = "com.google.dagger:dagger:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+deps.dagger = dagger
+
+def lifecycle = [:]
+lifecycle.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
+lifecycle.viewmodel_compose = "androidx.lifecycle:lifecycle-viewmodel-compose:$versions.lifecycle"
+deps.lifecycle = lifecycle
+
+def modo = [:]
+modo.modo = "com.github.terrakok:modo:$versions.modo"
+modo.compose = "com.github.terrakok:modo-render-android-compose:$versions.modo"
+deps.modo = modo
+
+def room = [:]
+room.room = "androidx.room:room-runtime:$versions.room"
+room.compiler = "androidx.room:room-compiler:$versions.room"
+deps.room = room
