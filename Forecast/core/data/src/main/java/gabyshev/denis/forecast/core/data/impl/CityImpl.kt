@@ -9,7 +9,7 @@ import java.io.InputStream
 import java.io.InputStreamReader
 import javax.inject.Inject
 
-internal class CityImpl @Inject constructor(
+internal class CityImpl constructor(
     private val context: Context,
 ) : CityApi {
 

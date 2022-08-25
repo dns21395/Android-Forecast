@@ -4,71 +4,62 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 30
+    compileSdk rootProject.ext.compileSdkVersion
+
     defaultConfig {
         applicationId "gabyshev.denis.forecast"
-        minSdkVersion 23
-        targetSdkVersion 30
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    packagingOptions {
-        exclude 'META-INF/rxjava.properties'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
-    kapt {
-        generateStubs = true
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('androidx.test.espresso:espresso-core:3.1.0', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-
     implementation(
             project(':core:data'),
+
+            deps.compose.activity,
+            deps.compose.ui,
+            deps.compose.material,
+            deps.compose.material3,
+            deps.compose.ui_tooling_preview,
+            deps.dagger.dagger,
+            deps.modo.compose,
+            deps.modo.modo,
     )
 
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    compile 'androidx.cardview:cardview:1.0.0'
-    compile 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testCompile 'junit:junit:4.12'
+    kapt(
+            deps.dagger.compiler
+    )
 
-    // Android
-    compile 'androidx.recyclerview:recyclerview:1.0.0'
-    compile 'com.google.android.material:material:1.0.0'
-
-    // transparent status bar
-    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-
-    // Kotlin
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
-    // Anko
-    compile 'org.jetbrains.anko:anko:0.10.4'
-
-    // RxJava
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.7'
-
-    // Dagger 2
-    kapt 'com.google.dagger:dagger-compiler:2.13'
-    compile 'com.google.dagger:dagger:2.13'
-
-    // Retrofit
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-
+    debugImplementation(
+            deps.compose.ui_tooling
+    )
 }
