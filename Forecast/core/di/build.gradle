@@ -1,0 +1,8 @@
+apply from: "$rootDir/common.gradle"
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation(deps.dagger.dagger,)
+
+    kapt(deps.dagger.compiler)
+}

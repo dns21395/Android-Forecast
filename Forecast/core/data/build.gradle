@@ -3,6 +3,8 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation(
+            project(':core:di'),
+
             deps.dagger.dagger,
 
             deps.coroutines.coroutines,

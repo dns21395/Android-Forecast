@@ -12,6 +12,10 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/data/Forecast.core.data.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/data/Forecast.core.data.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/data/Forecast.core.data.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/data/Forecast.core.data.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/data/Forecast.core.data.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/data/Forecast.core.data.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.iml" filepath="$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.unitTest.iml" />
     </modules>
   </component>
 </project>
