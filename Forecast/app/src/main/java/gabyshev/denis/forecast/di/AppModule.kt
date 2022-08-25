@@ -13,4 +13,8 @@ class AppModule(private val context: Context) {
     @Provides
     @Singleton
     fun provideModo(): Modo = Modo(AppReducer(context))
+
+    @Provides
+    @Singleton
+    fun provideContext(): Context = context
 }

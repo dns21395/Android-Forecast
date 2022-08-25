@@ -9,16 +9,10 @@ import gabyshev.denis.forecast.di.DaggerAppComponent
 
 class App : Application(), ApplicationApi {
 
-    private lateinit var component: AppComponent
-
-    override fun onCreate() {
-        super.onCreate()
-
-        component = DaggerAppComponent
-            .builder()
-            .appModule(AppModule(this))
-            .build()
-    }
+    private val component: AppComponent = DaggerAppComponent
+        .builder()
+        .appModule(AppModule(this))
+        .build()
 
     override fun coreProvider(): CoreProvider = component as CoreProvider
 }
