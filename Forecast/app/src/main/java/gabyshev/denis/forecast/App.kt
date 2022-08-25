@@ -1,7 +1,7 @@
 package gabyshev.denis.forecast
 
 import android.app.Application
-import gabyshev.denis.forecast.core.data.di.ApplicationApi
+import gabyshev.denis.forecast.core.di.ApplicationApi
 import gabyshev.denis.forecast.core.di.CoreProvider
 import gabyshev.denis.forecast.di.AppComponent
 import gabyshev.denis.forecast.di.AppModule

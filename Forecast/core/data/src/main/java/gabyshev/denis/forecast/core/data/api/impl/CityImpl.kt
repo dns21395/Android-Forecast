@@ -1,4 +1,4 @@
-package gabyshev.denis.forecast.core.data.impl
+package gabyshev.denis.forecast.core.data.api.impl
 
 import android.content.Context
 import android.content.res.AssetManager
@@ -9,7 +9,7 @@ import java.io.InputStream
 import java.io.InputStreamReader
 import javax.inject.Inject
 
-internal class CityImpl constructor(
+internal class CityImpl @Inject constructor(
     private val context: Context,
 ) : CityApi {
 
