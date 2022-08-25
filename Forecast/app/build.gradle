@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation(
             project(':core:data'),
+            project(':core:di'),
 
             deps.compose.activity,
             deps.compose.ui,
