@@ -17,7 +17,7 @@ class SplashActivity : BaseActivity(), SplashMvpView {
         fun getStartIntent(context: Context): Intent = Intent(context, SplashActivity::class.java)
     }
 
-    @Inject lateinit var presenter: SplashMvpPresenter<SplashMvpView>
+//    @Inject lateinit var presenter: SplashMvpPresenter<SplashMvpView>
 
     private val TAG = "SplashActivity"
 
@@ -25,13 +25,11 @@ class SplashActivity : BaseActivity(), SplashMvpView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        activityComponent.inject(this)
+//        activityComponent.inject(this)
 
-        setUp()
+//        setUp()
 
-        presenter.onAttach(this)
-
-
+//        presenter.onAttach(this)
     }
 
     override fun setUp() {
