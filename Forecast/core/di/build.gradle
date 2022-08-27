@@ -24,7 +24,8 @@ dependencies {
 
             deps.dagger.dagger,
             deps.lifecycle.viewmodel,
-            deps.lifecycle.viewmodel_compose
+            deps.lifecycle.viewmodel_compose,
+            deps.modo.modo,
     )
 
     kapt(deps.dagger.compiler)
