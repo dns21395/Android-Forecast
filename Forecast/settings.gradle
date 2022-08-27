@@ -3,5 +3,6 @@ include(
         ':core:data',
         ':core:di',
         ':core:redux',
+        ':core:ui',
         ':feature:select_city'
 )

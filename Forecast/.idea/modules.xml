@@ -20,6 +20,10 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/redux/Forecast.core.redux.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/redux/Forecast.core.redux.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/redux/Forecast.core.redux.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/redux/Forecast.core.redux.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/redux/Forecast.core.redux.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/redux/Forecast.core.redux.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/ui/Forecast.core.ui.iml" filepath="$PROJECT_DIR$/.idea/modules/core/ui/Forecast.core.ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/ui/Forecast.core.ui.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/ui/Forecast.core.ui.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/ui/Forecast.core.ui.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/ui/Forecast.core.ui.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/ui/Forecast.core.ui.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/ui/Forecast.core.ui.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/Forecast.feature.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/Forecast.feature.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/select_city/Forecast.feature.select_city.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/select_city/Forecast.feature.select_city.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/select_city/Forecast.feature.select_city.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/select_city/Forecast.feature.select_city.androidTest.iml" />
