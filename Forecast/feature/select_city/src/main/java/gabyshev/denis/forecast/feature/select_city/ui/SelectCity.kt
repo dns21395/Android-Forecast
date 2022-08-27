@@ -20,7 +20,7 @@ import gabyshev.denis.forecast.feature.select_city.store.SelectCityState
 fun SelectCityScreen() {
     val coreProvider = LocalContext.current.getCoreProvider()
     val component = DaggerSelectCityComponent.builder().coreProvider(coreProvider).build()
-    val viewModel: SearchCityViewModel = daggerViewModel { component.searchCityViewModel() }
+    val viewModel: SelectCityViewModel = daggerViewModel { component.selectCityViewModel() }
 
     val state = viewModel.uiState.collectAsState(initial = SelectCityState())
 

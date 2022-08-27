@@ -5,7 +5,7 @@ import gabyshev.denis.forecast.feature.select_city.store.OnCityNameEntered
 import gabyshev.denis.forecast.feature.select_city.store.SelectCityStore
 import javax.inject.Inject
 
-class SearchCityViewModel @Inject constructor(
+class SelectCityViewModel @Inject constructor(
     private val store: SelectCityStore,
 ) : ViewModel() {
 

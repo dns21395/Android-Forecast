@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.sp
 import gabyshev.denis.forecast.feature.select_city.R
 
 @Composable
-fun SearchCity(viewModel: SearchCityViewModel) {
+fun SearchCity(viewModel: SelectCityViewModel) {
     Box(Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.city_background),
@@ -53,7 +53,7 @@ fun SearchCity(viewModel: SearchCityViewModel) {
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun SearchCityField(viewModel: SearchCityViewModel) {
+fun SearchCityField(viewModel: SelectCityViewModel) {
     val textValue = remember { mutableStateOf(TextFieldValue("")) }
     val keyboardController = LocalSoftwareKeyboardController.current
 
