@@ -1,0 +1,12 @@
+apply from: "$rootDir/common.gradle"
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation(
+            project(':core:redux')
+    )
+
+    kapt(
+            deps.dagger.compiler
+    )
+}
