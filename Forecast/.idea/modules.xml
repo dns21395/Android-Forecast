@@ -16,6 +16,11 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/di/Forecast.core.di.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/Forecast.feature.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/Forecast.feature.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/select_city/Forecast.feature.select_city.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/select_city/Forecast.feature.select_city.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/select_city/Forecast.feature.select_city.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/select_city/Forecast.feature.select_city.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/select_city/Forecast.feature.select_city.main.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/select_city/Forecast.feature.select_city.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/feature/select_city/Forecast.feature.select_city.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/feature/select_city/Forecast.feature.select_city.unitTest.iml" />
     </modules>
   </component>
 </project>
