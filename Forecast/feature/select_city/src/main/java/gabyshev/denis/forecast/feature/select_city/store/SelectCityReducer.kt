@@ -1,7 +1,11 @@
 package gabyshev.denis.forecast.feature.select_city.store
 
 import gabyshev.denis.forecast.core.redux.Action
+import gabyshev.denis.forecast.feature.select_city.entity.ScreenType
 
 internal fun SelectCityState.reduce(action: Action): SelectCityState {
-    return this
+    return when (action) {
+        is OnCitiesFound -> copy(currentScreen = ScreenType.FOUND_CITIES)
+        else -> this
+    }
 }

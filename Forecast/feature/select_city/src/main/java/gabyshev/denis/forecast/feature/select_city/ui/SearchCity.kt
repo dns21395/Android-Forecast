@@ -5,6 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -12,28 +14,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import gabyshev.denis.forecast.core.di.daggerViewModel
-import gabyshev.denis.forecast.core.di.getCoreProvider
 import gabyshev.denis.forecast.feature.select_city.R
-import gabyshev.denis.forecast.feature.select_city.di.DaggerSelectCityComponent
 
 @Composable
-fun SearchCity() {
-    val coreProvider = LocalContext.current.getCoreProvider()
-    val component = DaggerSelectCityComponent.builder().coreProvider(coreProvider).build()
-    val viewModel: SearchCityViewModel = daggerViewModel { component.searchCityViewModel() }
-
+fun SearchCity(viewModel: SearchCityViewModel) {
     Box(Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.city_background),
@@ -54,9 +51,11 @@ fun SearchCity() {
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchCityField(viewModel: SearchCityViewModel) {
     val textValue = remember { mutableStateOf(TextFieldValue("")) }
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     Box(
         modifier = Modifier
@@ -91,6 +90,13 @@ fun SearchCityField(viewModel: SearchCityViewModel) {
                     }
                     innerTextField()
                 },
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                keyboardActions = KeyboardActions(
+                    onDone = {
+                        keyboardController?.hide()
+                        viewModel.onDoneButtonClicked(textValue.value.text)
+                    }
+                ),
                 textStyle = MaterialTheme.typography.body1
             )
         }

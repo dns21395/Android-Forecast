@@ -22,8 +22,8 @@ open class Store<State : Any>(
     open fun wire() {
         GlobalScope.launch(mainDispatcher) {
             actions.collect { action ->
-                middlewares.forEach { it.bind(action, currentState) }
-                reducer.invoke(currentState, action)
+                middlewares.forEach { it -> it.bind(action, currentState) { dispatch(it) } }
+                mutableState.emit(reducer.invoke(currentState, action))
             }
         }
     }
