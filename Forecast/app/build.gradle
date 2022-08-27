@@ -45,6 +45,7 @@ dependencies {
     implementation(
             project(':core:data'),
             project(':core:di'),
+            project(':feature:select_city'),
 
             deps.compose.activity,
             deps.compose.ui,
