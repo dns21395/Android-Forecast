@@ -1,4 +1,4 @@
-package gabyshev.denis.forecast.feature.select_city
+package gabyshev.denis.forecast.feature.select_city.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,12 +22,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import gabyshev.denis.forecast.feature.select_city.R
 
 @Composable
 fun SearchCity() {
     Box(Modifier.fillMaxSize()) {
-
-
         Image(
             painter = painterResource(id = R.drawable.city_background),
             contentScale = ContentScale.Crop,

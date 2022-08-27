@@ -3,7 +3,7 @@ package gabyshev.denis.forecast
 import androidx.compose.runtime.Composable
 import com.github.terrakok.modo.android.compose.ComposeScreen
 import com.github.terrakok.modo.android.compose.uniqueScreenKey
-import gabyshev.denis.forecast.feature.select_city.SearchCity
+import gabyshev.denis.forecast.feature.select_city.ui.SearchCity
 import kotlinx.android.parcel.Parcelize
 
 object Screen {
