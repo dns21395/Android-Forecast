@@ -78,6 +78,7 @@ fun SearchCityField(viewModel: SearchCityViewModel) {
             BasicTextField(
                 value = textValue.value,
                 onValueChange = { textValue.value = it },
+                singleLine = true,
                 modifier = Modifier
                     .background(Color.White)
                     .padding(vertical = 16.dp, horizontal = 8.dp),
