@@ -2,5 +2,6 @@ include(
         ':app',
         ':core:data',
         ':core:di',
+        ':core:redux',
         ':feature:select_city'
 )
