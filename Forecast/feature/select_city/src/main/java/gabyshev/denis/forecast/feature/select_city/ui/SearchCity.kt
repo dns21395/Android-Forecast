@@ -16,16 +16,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import gabyshev.denis.forecast.core.di.daggerViewModel
+import gabyshev.denis.forecast.core.di.getCoreProvider
 import gabyshev.denis.forecast.feature.select_city.R
+import gabyshev.denis.forecast.feature.select_city.di.DaggerSelectCityComponent
 
 @Composable
 fun SearchCity() {
+    val coreProvider = LocalContext.current.getCoreProvider()
+    val component = DaggerSelectCityComponent.builder().coreProvider(coreProvider).build()
+    val viewModel: SearchCityViewModel = daggerViewModel { component.searchCityViewModel() }
+
     Box(Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.city_background),
@@ -40,14 +48,14 @@ fun SearchCity() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row {
-                SearchCityField()
+                SearchCityField(viewModel)
             }
         }
     }
 }
 
 @Composable
-fun SearchCityField() {
+fun SearchCityField(viewModel: SearchCityViewModel) {
     val textValue = remember { mutableStateOf(TextFieldValue("")) }
 
     Box(
