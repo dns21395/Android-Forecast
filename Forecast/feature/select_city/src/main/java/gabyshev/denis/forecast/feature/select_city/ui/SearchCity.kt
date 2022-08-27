@@ -80,6 +80,7 @@ fun SearchCityField(viewModel: SelectCityViewModel) {
                 onValueChange = { textValue.value = it },
                 singleLine = true,
                 modifier = Modifier
+                    .fillMaxWidth()
                     .background(Color.White)
                     .padding(vertical = 16.dp, horizontal = 8.dp),
                 decorationBox = { innerTextField ->

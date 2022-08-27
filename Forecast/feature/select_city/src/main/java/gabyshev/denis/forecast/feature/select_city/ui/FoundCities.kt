@@ -17,7 +17,6 @@ fun FoundCities(
     cities: List<City>,
     onCitySelected: (Long) -> Unit,
 ) {
-
     LazyColumn(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
