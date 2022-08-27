@@ -2,6 +2,8 @@ package gabyshev.denis.forecast.feature.select_city.di
 
 import dagger.Module
 import dagger.Provides
+import gabyshev.denis.forecast.core.data.api.CityApi
+import gabyshev.denis.forecast.core.data.di.DataApi
 import gabyshev.denis.forecast.core.di.PerFeature
 import gabyshev.denis.forecast.core.store.AppStore
 import gabyshev.denis.forecast.feature.select_city.store.SelectCityMiddleware
@@ -24,4 +26,8 @@ class SelectCityModule {
             middlewares = listOf(selectCityMiddleware)
         )
     }
+
+    @Provides
+    @PerFeature
+    fun cityApi(dataApi: DataApi): CityApi = dataApi.cityApi()
 }

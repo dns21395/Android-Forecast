@@ -1,7 +1,7 @@
-package gabyshev.denis.forecast.core.di
+package gabyshev.denis.forecast.core.common
 
 import android.content.Context
-import com.github.terrakok.modo.Modo
+import gabyshev.denis.forecast.core.data.di.DataApi
 import gabyshev.denis.forecast.core.redux.Store
 import gabyshev.denis.forecast.core.store.AppState
 
@@ -11,5 +11,5 @@ interface CoreProvider {
 
     fun appStore(): Store<AppState>
 
-    fun modo(): Modo
+    fun provideDataApi(): DataApi
 }

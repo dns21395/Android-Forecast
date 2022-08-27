@@ -1,4 +1,4 @@
-package gabyshev.denis.forecast.core.di
+package gabyshev.denis.forecast.core.common
 
 interface ApplicationApi {
 

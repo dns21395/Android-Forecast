@@ -9,11 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import gabyshev.denis.forecast.core.common.getCoreProvider
 import gabyshev.denis.forecast.core.di.daggerViewModel
-import gabyshev.denis.forecast.core.di.getCoreProvider
 import gabyshev.denis.forecast.feature.select_city.R
 import gabyshev.denis.forecast.feature.select_city.di.DaggerSelectCityComponent
-import gabyshev.denis.forecast.feature.select_city.entity.ScreenType
+import gabyshev.denis.forecast.feature.select_city.domain.entity.ScreenType
 import gabyshev.denis.forecast.feature.select_city.store.SelectCityState
 
 @Composable
@@ -35,7 +35,7 @@ fun SelectCityScreen() {
         if (state.value.currentScreen == ScreenType.SEARCH_CITY) {
             SearchCity(viewModel = viewModel)
         } else {
-            FoundCities()
+            FoundCities(state.value.cities, {})
         }
     }
 }

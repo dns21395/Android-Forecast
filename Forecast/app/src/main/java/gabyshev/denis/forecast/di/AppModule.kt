@@ -5,6 +5,9 @@ import com.github.terrakok.modo.Modo
 import com.github.terrakok.modo.android.compose.AppReducer
 import dagger.Module
 import dagger.Provides
+import gabyshev.denis.forecast.core.data.api.CityApi
+import gabyshev.denis.forecast.core.data.di.DataApi
+import gabyshev.denis.forecast.core.data.di.buildDataComponent
 import gabyshev.denis.forecast.core.store.AppState
 import gabyshev.denis.forecast.core.store.AppStore
 import gabyshev.denis.forecast.core.store.reduce
@@ -35,4 +38,8 @@ class AppModule(private val context: Context) {
         ),
         mainDispatcher = Dispatchers.Main
     )
+
+    @Provides
+    @Singleton
+    fun provideDataApi(): DataApi = buildDataComponent(context)
 }

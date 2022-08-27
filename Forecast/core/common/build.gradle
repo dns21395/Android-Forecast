@@ -2,6 +2,7 @@ apply from: "$rootDir/common.gradle"
 
 dependencies {
     implementation(
+            project(':core:data'),
             project(':core:redux'),
             project(':core:store'),
 

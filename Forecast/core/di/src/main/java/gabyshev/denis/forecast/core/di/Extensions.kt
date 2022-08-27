@@ -1,6 +1,5 @@
 package gabyshev.denis.forecast.core.di
 
-import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -19,5 +18,3 @@ inline fun <reified T : ViewModel> daggerViewModel(
             }
         }
     )
-
-fun Context.getCoreProvider() = (this.applicationContext as ApplicationApi).coreProvider()

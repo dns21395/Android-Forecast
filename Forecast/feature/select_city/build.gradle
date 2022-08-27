@@ -9,6 +9,8 @@ android {
 
 dependencies {
     implementation(
+            project(':core:common'),
+            project(':core:data'),
             project(':core:di'),
             project(':core:redux'),
             project(':core:store'),
