@@ -1,0 +1,10 @@
+include(
+        ':app',
+        ':core:common',
+        ':core:data',
+        ':core:di',
+        ':core:redux',
+        ':core:store',
+        ':core:ui',
+        ':feature:select_city'
+)
