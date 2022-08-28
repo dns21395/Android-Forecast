@@ -6,5 +6,6 @@ include(
         ':core:redux',
         ':core:store',
         ':core:ui',
-        ':feature:select_city'
+        ':feature:select_city',
+        ':feature:weather',
 )
