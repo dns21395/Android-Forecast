@@ -1,5 +1,9 @@
 package gabyshev.denis.forecast.feature.select_city.ui
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,9 +36,24 @@ fun SelectCityScreen() {
             contentDescription = null
         )
 
-        if (state.value.currentScreen == ScreenType.SEARCH_CITY) {
+        AnimatedVisibility(
+            visible = state.value.currentScreen == ScreenType.SEARCH_CITY,
+            exit = slideOutHorizontally(
+                targetOffsetX = { fullWidth -> -fullWidth }
+            )
+        ) {
             SearchCity(viewModel = viewModel)
-        } else {
+        }
+
+        AnimatedVisibility(
+            visible = state.value.currentScreen == ScreenType.FOUND_CITIES,
+            enter = slideInHorizontally(
+                initialOffsetX = { fullWidth -> fullWidth * 2 }
+            ),
+            exit = slideOutHorizontally(
+                targetOffsetX = { fullWidth -> fullWidth * 2 }
+            )
+        ) {
             FoundCities(state.value.cities, {})
         }
     }
