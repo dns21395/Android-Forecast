@@ -6,12 +6,10 @@ dependencies {
             project(':core:di'),
 
             deps.dagger.dagger,
-
             deps.coroutines.coroutines,
             deps.squareup.retrofit,
+            deps.squareup.converter_moshi,
     )
 
-    kapt(
-            deps.dagger.compiler
-    )
+    kapt(deps.dagger.compiler)
 }

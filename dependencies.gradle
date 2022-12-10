@@ -64,6 +64,7 @@ squareup.otto = "com.squareup:otto:$versions.otto"
 squareup.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 squareup.adapter_rxjava = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
 squareup.converter_gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+squareup.converter_moshi = "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
 squareup.okhttp = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
 squareup.kotlinx_serialization_converter = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$versions.kotlinx_serialization_converter"
 deps.squareup = squareup
