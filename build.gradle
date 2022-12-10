@@ -3,10 +3,10 @@
 buildscript {
     apply from: 'dependencies.gradle'
     ext {
-        compose_version = '1.1.0-beta01'
+        compose_version = '1.3.2'
         minSdkVersion = 21
-        targetSdkVersion = 32
-        compileSdkVersion = 32
+        targetSdkVersion = 33
+        compileSdkVersion = 33
     }
 
     repositories {
@@ -16,7 +16,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.2.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

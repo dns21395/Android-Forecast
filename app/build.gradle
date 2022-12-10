@@ -58,11 +58,9 @@ dependencies {
 
             deps.compose.activity,
             deps.compose.ui,
-            deps.compose.material,
             deps.compose.material3,
             deps.compose.ui_tooling_preview,
             deps.dagger.dagger,
-            deps.modo.compose,
             deps.modo.modo,
     )
 

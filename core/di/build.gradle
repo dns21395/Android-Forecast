@@ -1,5 +1,6 @@
 apply from: "$rootDir/common.gradle"
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
 
 android {
     buildFeatures {
