@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdk rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId "gabyshev.denis.forecast"
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    kotlinOptions {
+        // Удалить после перехода на Kotlin 1.6.10
+        // https://stackoverflow.com/questions/70992947/how-do-i-resolve-error-message-inheritance-from-an-interface-with-jvmdefault
+        freeCompilerArgs += ["-Xjvm-default=all"]
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation(
+            project(':core:common'),
+            project(':core:data'),
+            project(':core:di'),
+            project(':core:redux'),
+            project(':core:store'),
+            project(':core:ui'),
+            project(':feature:select_city'),
+
+            deps.compose.activity,
+            deps.compose.ui,
+            deps.compose.material3,
+            deps.compose.ui_tooling_preview,
+            deps.dagger.dagger,
+            deps.modo.modo,
+    )
+
+    kapt(
+            deps.dagger.compiler
+    )
+
+    debugImplementation(
+            deps.compose.ui_tooling
+    )
+}
