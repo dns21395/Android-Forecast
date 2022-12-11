@@ -13,6 +13,8 @@ versions.coroutines = '1.6.4'
 
 versions.dagger = '2.44.2'
 
+versions.gson = '2.10'
+
 versions.lifecycle = '2.5.0'
 
 versions.modo = '0.7.1'
@@ -46,6 +48,10 @@ def dagger = [:]
 dagger.dagger = "com.google.dagger:dagger:$versions.dagger"
 dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
 deps.dagger = dagger
+
+def gson = [:]
+gson.gson = "com.google.code.gson:gson:$versions.gson"
+deps.gson = gson
 
 def lifecycle = [:]
 lifecycle.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"

@@ -7,6 +7,7 @@ import gabyshev.denis.forecast.core.redux.Middleware
 import gabyshev.denis.forecast.feature.select_city.R
 import gabyshev.denis.forecast.feature.select_city.domain.entity.SearchCitiesInteractor
 import gabyshev.denis.forecast.feature.select_city.store.OnCitiesFound
+import gabyshev.denis.forecast.feature.select_city.store.OnCityClicked
 import gabyshev.denis.forecast.feature.select_city.store.OnCityNameEntered
 import gabyshev.denis.forecast.feature.select_city.store.SelectCityState
 import javax.inject.Inject
@@ -25,6 +26,9 @@ class SelectCityMiddleware @Inject constructor(
                 } else {
                     dispatch(ShowToastAction(resourceManagerApi.getString(R.string.city_not_found)))
                 }
+            }
+            is OnCityClicked -> {
+                searchCitiesInteractor.saveCity(action.city)
             }
         }
     }

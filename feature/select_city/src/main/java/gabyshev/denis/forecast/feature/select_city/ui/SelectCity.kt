@@ -54,7 +54,7 @@ fun SelectCityScreen() {
                 targetOffsetX = { fullWidth -> fullWidth * 2 }
             )
         ) {
-            FoundCities(state.value.cities, {})
+            FoundCities(state.value.cities) { viewModel.onCitySelected(it) }
         }
     }
 }
