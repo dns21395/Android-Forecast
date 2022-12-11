@@ -1,11 +1,8 @@
 package gabyshev.denis.forecast.di
 
 import android.content.Context
-import com.github.terrakok.modo.Modo
-import com.github.terrakok.modo.android.compose.AppReducer
 import dagger.Module
 import dagger.Provides
-import gabyshev.denis.forecast.core.data.api.CityApi
 import gabyshev.denis.forecast.core.data.di.DataApi
 import gabyshev.denis.forecast.core.data.di.buildDataComponent
 import gabyshev.denis.forecast.core.store.AppState
@@ -18,10 +15,6 @@ import javax.inject.Singleton
 
 @Module
 class AppModule(private val context: Context) {
-
-    @Provides
-    @Singleton
-    fun provideModo(): Modo = Modo(AppReducer(context))
 
     @Provides
     @Singleton
