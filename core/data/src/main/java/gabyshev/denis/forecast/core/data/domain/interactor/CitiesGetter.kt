@@ -3,13 +3,15 @@ package gabyshev.denis.forecast.core.data.domain.interactor
 import android.content.Context
 import android.content.res.AssetManager
 import android.util.JsonReader
+import android.util.Log
 import gabyshev.denis.forecast.core.data.api.entity.City
+import gabyshev.denis.forecast.core.data.api.entity.Location
 import java.io.InputStream
 import java.io.InputStreamReader
 import javax.inject.Inject
 
 class CitiesGetter @Inject constructor(
-    private val context: Context
+    private val context: Context,
 ) {
 
     fun getCities(city: String): List<City> =
@@ -51,6 +53,7 @@ class CitiesGetter @Inject constructor(
         var id: Long = -1
         var name: String? = null
         var country: String? = null
+        var location: Location? = null
 
         reader.beginObject()
 
@@ -66,6 +69,15 @@ class CitiesGetter @Inject constructor(
                 "country" -> {
                     country = reader.nextString()
                 }
+                "coord" -> {
+                    reader.beginObject()
+                    reader.nextName()
+                    val longitude = reader.nextDouble()
+                    reader.nextName()
+                    val latitude = reader.nextDouble()
+                    location = Location(latitude, longitude)
+                    reader.endObject()
+                }
                 else -> {
                     reader.skipValue()
                 }
@@ -73,6 +85,11 @@ class CitiesGetter @Inject constructor(
         }
         reader.endObject()
 
-        return City(id, name ?: "", country ?: "")
+        return City(
+            id,
+            name ?: "",
+            country ?: "",
+            location ?: Location(0.0, 0.0)
+        )
     }
 }
