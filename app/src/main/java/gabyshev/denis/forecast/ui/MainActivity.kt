@@ -8,7 +8,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.github.terrakok.modo.Modo
-import com.github.terrakok.modo.stack.StackScreen
 import gabyshev.denis.forecast.RootStack
 import gabyshev.denis.forecast.SelectCity
 import gabyshev.denis.forecast.core.ui.theme.ForecastTheme
@@ -16,8 +15,9 @@ import gabyshev.denis.forecast.di.AppApi
 
 class MainActivity : ComponentActivity() {
 
-    private var rootScreen: StackScreen? = null
-
+    private val appNavigation: AppNavigation by lazy {
+        (applicationContext as AppApi).getComponent().navigation()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,9 +26,9 @@ class MainActivity : ComponentActivity() {
         (applicationContext as AppApi).getComponent().mainViewModel()
 
 
-        rootScreen = Modo.init(savedInstanceState, rootScreen) {
-            RootStack(SelectCity())
-        }
+        appNavigation.setup(
+            Modo.init(savedInstanceState, appNavigation.getStack()) { RootStack(SelectCity()) }
+        )
 
         setContent {
             ForecastTheme {
@@ -37,14 +37,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    rootScreen?.Content()
+                    appNavigation.Content()
                 }
             }
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        Modo.save(outState, rootScreen)
+        Modo.save(outState, appNavigation.getStack())
         super.onSaveInstanceState(outState)
     }
 }

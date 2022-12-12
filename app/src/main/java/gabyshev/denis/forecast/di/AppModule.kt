@@ -10,6 +10,7 @@ import gabyshev.denis.forecast.core.store.AppStore
 import gabyshev.denis.forecast.core.store.reduce
 import gabyshev.denis.forecast.store.middleware.NavigationMiddleware
 import gabyshev.denis.forecast.store.middleware.ToastMiddleware
+import gabyshev.denis.forecast.ui.AppNavigation
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
@@ -34,6 +35,10 @@ class AppModule(private val context: Context) {
         ),
         mainDispatcher = Dispatchers.Main
     )
+
+    @Provides
+    @Singleton
+    fun provideRootStack(): AppNavigation = AppNavigation()
 
     @Provides
     @Singleton

@@ -1,5 +1,6 @@
 package gabyshev.denis.forecast
 
+import WeatherScreen
 import androidx.compose.runtime.Composable
 import com.github.terrakok.modo.Screen
 import com.github.terrakok.modo.ScreenKey
@@ -25,5 +26,16 @@ class SelectCity(
     @Composable
     override fun Content() {
         SelectCityScreen()
+    }
+}
+
+@Parcelize
+class Weather(
+    override val screenKey: ScreenKey = generateScreenKey()
+): Screen {
+
+    @Composable
+    override fun Content() {
+        WeatherScreen()
     }
 }

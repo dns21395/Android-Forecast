@@ -1,5 +1,6 @@
 package gabyshev.denis.forecast.feature.select_city.store.middleware
 
+import gabyshev.denis.forecast.core.common.store.OpenSelectCityScreen
 import gabyshev.denis.forecast.core.common.store.ShowToastAction
 import gabyshev.denis.forecast.core.data.api.ResourceManagerApi
 import gabyshev.denis.forecast.core.redux.Action
@@ -29,6 +30,7 @@ class SelectCityMiddleware @Inject constructor(
             }
             is OnCityClicked -> {
                 searchCitiesInteractor.saveCity(action.city)
+                dispatch(OpenSelectCityScreen)
             }
         }
     }
