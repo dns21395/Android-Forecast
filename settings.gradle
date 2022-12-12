@@ -8,4 +8,5 @@ include(
         ':core:ui',
         ':feature:select_city',
         ':feature:weather',
+        ':feature:weather_week',
 )
