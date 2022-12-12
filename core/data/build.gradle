@@ -7,6 +7,7 @@ dependencies {
 
             deps.dagger.dagger,
             deps.coroutines.coroutines,
+            deps.gson.gson,
             deps.squareup.retrofit,
             deps.squareup.converter_moshi,
     )

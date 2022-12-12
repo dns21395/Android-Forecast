@@ -5,4 +5,8 @@ import gabyshev.denis.forecast.core.data.api.entity.City
 interface CityApi {
 
     fun getCities(city: String): List<City>
+
+    fun saveCity(city: City)
+
+    fun getSelectedCity(): City
 }

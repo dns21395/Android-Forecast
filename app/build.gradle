@@ -55,6 +55,7 @@ dependencies {
             project(':core:store'),
             project(':core:ui'),
             project(':feature:select_city'),
+            project(':feature:weather'),
 
             deps.compose.activity,
             deps.compose.ui,
