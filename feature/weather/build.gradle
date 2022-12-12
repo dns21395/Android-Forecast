@@ -18,6 +18,7 @@ dependencies {
             project(':core:di'),
             project(':core:redux'),
             project(':core:store'),
+            project(':core:ui'),
 
             deps.compose.ui,
             deps.compose.material,

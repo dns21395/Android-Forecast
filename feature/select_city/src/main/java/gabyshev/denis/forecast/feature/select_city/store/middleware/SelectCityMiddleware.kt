@@ -6,7 +6,7 @@ import gabyshev.denis.forecast.core.data.api.ResourceManagerApi
 import gabyshev.denis.forecast.core.redux.Action
 import gabyshev.denis.forecast.core.redux.Middleware
 import gabyshev.denis.forecast.feature.select_city.R
-import gabyshev.denis.forecast.feature.select_city.domain.entity.SearchCitiesInteractor
+import gabyshev.denis.forecast.feature.select_city.domain.interactor.SearchCitiesInteractor
 import gabyshev.denis.forecast.feature.select_city.store.OnCitiesFound
 import gabyshev.denis.forecast.feature.select_city.store.OnCityClicked
 import gabyshev.denis.forecast.feature.select_city.store.OnCityNameEntered

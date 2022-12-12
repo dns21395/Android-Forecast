@@ -1,4 +1,4 @@
-package gabyshev.denis.forecast.feature.select_city.domain.entity
+package gabyshev.denis.forecast.feature.select_city.domain.interactor
 
 import gabyshev.denis.forecast.core.data.api.CityApi
 import gabyshev.denis.forecast.core.data.api.entity.City
