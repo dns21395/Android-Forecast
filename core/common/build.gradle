@@ -8,5 +8,6 @@ dependencies {
 
             deps.coroutines.coroutines,
             deps.lifecycle.viewmodel,
+            deps.modo.modo,
     )
 }

@@ -10,13 +10,14 @@ import androidx.compose.ui.Modifier
 import com.github.terrakok.modo.Modo
 import gabyshev.denis.forecast.RootStack
 import gabyshev.denis.forecast.SelectCity
+import gabyshev.denis.forecast.core.common.Navigation
 import gabyshev.denis.forecast.core.ui.theme.ForecastTheme
 import gabyshev.denis.forecast.di.AppApi
 
 class MainActivity : ComponentActivity() {
 
-    private val appNavigation: AppNavigation by lazy {
-        (applicationContext as AppApi).getComponent().navigation()
+    private val appNavigation: Navigation by lazy {
+        (applicationContext as AppApi).getComponent().provideNavigation()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,8 +27,8 @@ class MainActivity : ComponentActivity() {
         (applicationContext as AppApi).getComponent().mainViewModel()
 
 
-        appNavigation.setup(
-            Modo.init(savedInstanceState, appNavigation.getStack()) { RootStack(SelectCity()) }
+        appNavigation.setContainer(
+            Modo.init(savedInstanceState, appNavigation.getContainer()) { RootStack(SelectCity()) }
         )
 
         setContent {
@@ -37,14 +38,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    appNavigation.Content()
+                    appNavigation.getContainer()?.Content()
                 }
             }
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        Modo.save(outState, appNavigation.getStack())
+        Modo.save(outState, appNavigation.getContainer())
         super.onSaveInstanceState(outState)
     }
 }

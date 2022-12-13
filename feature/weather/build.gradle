@@ -1,5 +1,6 @@
 apply from: "$rootDir/common.gradle"
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
 
 android {
     buildFeatures {
@@ -27,6 +28,7 @@ dependencies {
             deps.dagger.dagger,
             deps.lifecycle.viewmodel,
             deps.lifecycle.viewmodel_compose,
+            deps.modo.modo,
     )
 
     kapt(
