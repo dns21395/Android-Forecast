@@ -1,0 +1,31 @@
+apply from: "$rootDir/common.gradle"
+apply plugin: 'kotlin-kapt'
+
+android {
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+}
+
+dependencies {
+    implementation(
+            project(':core:ui'),
+
+            deps.compose.ui,
+            deps.compose.material,
+            deps.compose.material3,
+            deps.compose.ui_tooling_preview,
+    )
+
+    kapt(
+            deps.dagger.compiler
+    )
+
+    debugImplementation(
+            deps.compose.ui_tooling
+    )
+}
