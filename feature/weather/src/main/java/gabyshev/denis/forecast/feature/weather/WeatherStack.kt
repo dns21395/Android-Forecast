@@ -1,7 +1,5 @@
 package gabyshev.denis.forecast.feature.weather
 
-import WeatherScreen
-import WeatherScreen2
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -16,6 +14,8 @@ import com.github.terrakok.modo.multiscreen.MultiScreenNavModel
 import com.github.terrakok.modo.multiscreen.selectContainer
 import com.github.terrakok.modo.stack.StackNavModel
 import com.github.terrakok.modo.stack.StackScreen
+import gabyshev.denis.forecast.weather_day.WeekDay
+import gabyshev.denis.forecast.weather_week.WeekScreen
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -78,7 +78,7 @@ class Weather(
 
     @Composable
     override fun Content() {
-        WeatherScreen()
+        WeekDay()
     }
 }
 
@@ -89,6 +89,6 @@ class Weather2(
 
     @Composable
     override fun Content() {
-        WeatherScreen2()
+        WeekScreen()
     }
 }

@@ -20,6 +20,8 @@ dependencies {
             project(':core:redux'),
             project(':core:store'),
             project(':core:ui'),
+            project(':feature:weather_day'),
+            project(':feature:weather_week'),
 
             deps.compose.ui,
             deps.compose.material,

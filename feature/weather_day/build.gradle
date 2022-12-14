@@ -19,6 +19,7 @@ dependencies {
             deps.compose.material,
             deps.compose.material3,
             deps.compose.ui_tooling_preview,
+            deps.dagger.dagger,
     )
 
     kapt(
