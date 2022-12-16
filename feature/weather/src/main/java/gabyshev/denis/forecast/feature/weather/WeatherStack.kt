@@ -15,7 +15,7 @@ import com.github.terrakok.modo.multiscreen.selectContainer
 import com.github.terrakok.modo.stack.StackNavModel
 import com.github.terrakok.modo.stack.StackScreen
 import gabyshev.denis.forecast.weather_day.WeekDay
-import gabyshev.denis.forecast.weather_week.WeekScreen
+import gabyshev.denis.forecast.weather_week.ui.WeekScreen
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
