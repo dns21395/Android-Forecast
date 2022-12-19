@@ -27,7 +27,7 @@ internal class DataModule(private val context: Context) {
     fun provideCityApi(cityImpl: CityImpl): CityApi = cityImpl
 
     @Provides
-    @Singleton
+    @PerFeature
     fun provideWeatherApi(): WeatherApi {
         return Retrofit.Builder()
             .baseUrl("https://api.open-meteo.com")

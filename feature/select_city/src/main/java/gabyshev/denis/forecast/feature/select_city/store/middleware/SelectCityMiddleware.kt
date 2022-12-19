@@ -18,7 +18,7 @@ class SelectCityMiddleware @Inject constructor(
     private val resourceManagerApi: ResourceManagerApi
 ) : Middleware<SelectCityState> {
 
-    override fun bind(action: Action, state: SelectCityState, dispatch: (Action) -> Unit) {
+    override suspend fun bind(action: Action, state: SelectCityState, dispatch: (Action) -> Unit) {
         when (action) {
             is OnCityNameEntered -> {
                 val cities = searchCitiesInteractor.searchCities(action.cityName)

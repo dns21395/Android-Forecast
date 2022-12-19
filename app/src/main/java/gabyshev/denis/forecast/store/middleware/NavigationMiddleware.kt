@@ -13,7 +13,7 @@ class NavigationMiddleware @Inject constructor(
     private val navigation: Navigation,
 ) : Middleware<AppState> {
 
-    override fun bind(action: Action, state: AppState, dispatch: (Action) -> Unit) {
+    override suspend fun bind(action: Action, state: AppState, dispatch: (Action) -> Unit) {
         when (action) {
             is OpenSelectCityScreen -> navigation.getNavigation().newStack(WeatherStack())
             else -> Unit
