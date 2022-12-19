@@ -12,7 +12,7 @@ class ToastMiddleware @Inject constructor(
     private val context: Context,
 ) : Middleware<AppState> {
 
-    override fun bind(action: Action, state: AppState, dispatch: (Action) -> Unit) {
+    override suspend fun bind(action: Action, state: AppState, dispatch: (Action) -> Unit) {
         when (action) {
             is ShowToastAction -> Toast.makeText(context, action.text, Toast.LENGTH_LONG).show()
         }
