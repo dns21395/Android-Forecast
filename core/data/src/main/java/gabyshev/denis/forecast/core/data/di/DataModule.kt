@@ -8,7 +8,9 @@ import gabyshev.denis.forecast.core.data.api.ResourceManagerApi
 import gabyshev.denis.forecast.core.data.api.WeatherApi
 import gabyshev.denis.forecast.core.data.api.impl.CityImpl
 import gabyshev.denis.forecast.core.data.api.impl.ResourceManagerImpl
+import gabyshev.denis.forecast.core.data.api.interactor.WeekInteractor
 import gabyshev.denis.forecast.core.data.domain.interactor.WeatherInteractor
+import gabyshev.denis.forecast.core.data.domain.interactor.WeekInteractorImpl
 import gabyshev.denis.forecast.core.di.PerFeature
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -47,4 +49,8 @@ internal class DataModule(private val context: Context) {
     ): ResourceManagerApi {
         return resourceManagerImpl
     }
+
+    @PerFeature
+    @Provides
+    fun provideWeekInteractor(weekInteractor: WeekInteractorImpl): WeekInteractor = weekInteractor
 }
