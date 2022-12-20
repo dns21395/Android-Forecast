@@ -9,11 +9,10 @@ internal class WeekViewModel @Inject constructor(
     private val store: WeekStore
 ) : ViewModel() {
 
+    val uiState = store.state
+
     init {
         store.wire()
-    }
-
-    fun onButtonClicked() {
         store.dispatch(InitWeekScreen)
     }
 }

@@ -3,7 +3,7 @@ package gabyshev.denis.forecast.weather_week.di
 import dagger.Module
 import dagger.Provides
 import gabyshev.denis.forecast.core.data.api.CityApi
-import gabyshev.denis.forecast.core.data.api.WeatherApi
+import gabyshev.denis.forecast.core.data.api.interactor.WeekInteractor
 import gabyshev.denis.forecast.core.data.di.DataApi
 import gabyshev.denis.forecast.core.di.PerFeature
 import gabyshev.denis.forecast.core.store.AppStore
@@ -34,5 +34,5 @@ internal class WeekModule {
 
     @Provides
     @PerFeature
-    fun weatherApi(dataApi: DataApi): WeatherApi = dataApi.weatherApi()
+    fun weatherApi(dataApi: DataApi): WeekInteractor = dataApi.weekInteractor()
 }

@@ -2,7 +2,7 @@ package gabyshev.denis.forecast.core.data.di
 
 import gabyshev.denis.forecast.core.data.api.CityApi
 import gabyshev.denis.forecast.core.data.api.ResourceManagerApi
-import gabyshev.denis.forecast.core.data.api.WeatherApi
+import gabyshev.denis.forecast.core.data.api.interactor.WeekInteractor
 
 interface DataApi {
 
@@ -10,5 +10,5 @@ interface DataApi {
 
     fun resourceManagerApi(): ResourceManagerApi
 
-    fun weatherApi(): WeatherApi
+    fun weekInteractor(): WeekInteractor
 }
