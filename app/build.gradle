@@ -60,9 +60,9 @@ dependencies {
             deps.compose.activity,
             deps.compose.ui,
             deps.compose.material3,
+            deps.compose.navigation,
             deps.compose.ui_tooling_preview,
             deps.dagger.dagger,
-            deps.modo.modo,
     )
 
     kapt(

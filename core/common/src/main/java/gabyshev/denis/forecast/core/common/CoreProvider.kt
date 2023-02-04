@@ -12,6 +12,4 @@ interface CoreProvider {
     fun appStore(): Store<AppState>
 
     fun provideDataApi(): DataApi
-
-    fun navigation(): Navigation
 }

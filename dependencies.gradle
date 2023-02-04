@@ -8,6 +8,8 @@ versions.compose_activity = '1.6.1'
 versions.compose_material = '1.3.1'
 // https://developer.android.com/jetpack/androidx/releases/compose-material3
 versions.compose_material3 = '1.0.1'
+// https://developer.android.com/jetpack/compose/navigation
+versions.compose_navigation = '2.5.3'
 
 versions.coroutines = '1.6.4'
 
@@ -16,8 +18,6 @@ versions.dagger = '2.44.2'
 versions.gson = '2.10'
 
 versions.lifecycle = '2.5.0'
-
-versions.modo = '0.7.1'
 
 versions.retrofit = '2.9.0'
 
@@ -39,6 +39,7 @@ def compose = [:]
 compose.activity = "androidx.activity:activity-compose:$versions.compose_activity"
 compose.material = "androidx.compose.material:material:$versions.compose_material"
 compose.material3 = "androidx.compose.material3:material3:$versions.compose_material3"
+compose.navigation = "androidx.navigation:navigation-compose:$versions.compose_navigation"
 compose.ui = "androidx.compose.ui:ui:$versions.compose"
 compose.ui_tooling =  "androidx.compose.ui:ui-tooling:$versions.compose"
 compose.ui_tooling_preview = "androidx.compose.ui:ui-tooling-preview:$versions.compose"
@@ -57,10 +58,6 @@ def lifecycle = [:]
 lifecycle.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
 lifecycle.viewmodel_compose = "androidx.lifecycle:lifecycle-viewmodel-compose:$versions.lifecycle"
 deps.lifecycle = lifecycle
-
-def modo = [:]
-modo.modo = "com.github.terrakok:modo-compose:$versions.modo"
-deps.modo = modo
 
 def room = [:]
 room.room = "androidx.room:room-runtime:$versions.room"
