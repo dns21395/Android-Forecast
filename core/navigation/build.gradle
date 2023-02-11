@@ -1,0 +1,19 @@
+apply from: "$rootDir/common.gradle"
+apply plugin: 'kotlin-kapt'
+
+android {
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+}
+
+dependencies {
+
+    implementation(
+            deps.compose.navigation
+    )
+}

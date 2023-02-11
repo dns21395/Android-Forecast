@@ -3,6 +3,7 @@ include(
         ':core:common',
         ':core:data',
         ':core:di',
+        ':core:navigation',
         ':core:redux',
         ':core:store',
         ':core:ui',
