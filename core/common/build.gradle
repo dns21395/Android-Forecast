@@ -6,6 +6,7 @@ dependencies {
             project(':core:redux'),
             project(':core:store'),
 
+            deps.compose.navigation,
             deps.coroutines.coroutines,
             deps.lifecycle.viewmodel,
             deps.modo.modo,
