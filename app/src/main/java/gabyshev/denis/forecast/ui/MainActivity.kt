@@ -6,8 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import gabyshev.denis.forecast.core.common.AppDependenciesProvider
+import gabyshev.denis.forecast.core.common.LocalAppDependenciesProvider
 import gabyshev.denis.forecast.core.ui.theme.ForecastTheme
 import gabyshev.denis.forecast.di.AppApi
 
@@ -30,7 +33,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AppNavGraph(modifier = Modifier, navController = navController)
+                    CompositionLocalProvider(
+                        LocalAppDependenciesProvider provides (applicationContext as AppDependenciesProvider)
+                    ) {
+                        AppNavGraph(modifier = Modifier, navController = navController)
+                    }
                 }
             }
         }

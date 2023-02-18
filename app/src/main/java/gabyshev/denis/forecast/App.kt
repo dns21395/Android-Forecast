@@ -1,6 +1,7 @@
 package gabyshev.denis.forecast
 
 import android.app.Application
+import gabyshev.denis.forecast.core.common.AppDependenciesProvider
 import gabyshev.denis.forecast.di.AppApi
 import gabyshev.denis.forecast.di.AppComponent
 import gabyshev.denis.forecast.di.AppModule
@@ -9,7 +10,8 @@ import gabyshev.denis.forecast.di.DaggerAppComponent
 class App :
     Application(),
     gabyshev.denis.forecast.core.common.ApplicationApi,
-    AppApi {
+    AppApi,
+    AppDependenciesProvider {
 
     private val component: AppComponent = DaggerAppComponent
         .builder()
