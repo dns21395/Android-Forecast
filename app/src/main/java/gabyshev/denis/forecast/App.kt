@@ -2,6 +2,8 @@ package gabyshev.denis.forecast
 
 import android.app.Application
 import gabyshev.denis.forecast.core.common.AppDependenciesProvider
+import gabyshev.denis.forecast.core.common.CoreProvider
+import gabyshev.denis.forecast.core.common.Destinations
 import gabyshev.denis.forecast.di.AppApi
 import gabyshev.denis.forecast.di.AppComponent
 import gabyshev.denis.forecast.di.AppModule
@@ -20,5 +22,7 @@ class App :
 
     override fun getComponent(): AppComponent = component
 
-    override fun coreProvider(): gabyshev.denis.forecast.core.common.CoreProvider = component
+    override fun coreProvider(): CoreProvider = component
+
+    override val destinations: Destinations = component.destinations
 }

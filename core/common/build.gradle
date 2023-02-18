@@ -1,5 +1,14 @@
 apply from: "$rootDir/common.gradle"
 
+android {
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+}
+
 dependencies {
     implementation(
             project(':core:data'),
@@ -8,6 +17,7 @@ dependencies {
 
             deps.compose.navigation,
             deps.coroutines.coroutines,
+            deps.dagger.dagger,
             deps.lifecycle.viewmodel,
             deps.modo.modo,
     )

@@ -5,6 +5,8 @@ import androidx.compose.runtime.compositionLocalOf
 interface AppDependenciesProvider {
 
     fun coreProvider(): CoreProvider
+
+    val destinations: Destinations
 }
 
 val LocalAppDependenciesProvider = compositionLocalOf<AppDependenciesProvider> {
