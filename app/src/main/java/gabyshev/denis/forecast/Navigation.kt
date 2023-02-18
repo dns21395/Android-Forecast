@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import gabyshev.denis.forecast.core.common.LocalAppDependenciesProvider
 import gabyshev.denis.forecast.core.common.find
 import gabyshev.denis.forecast.feature.select_city.SelectCityEntry
+import gabyshev.denis.forecast.feature.weather.WeatherEntry
 
 @Composable
 fun Navigation() {
@@ -16,11 +17,16 @@ fun Navigation() {
     val destinations = LocalAppDependenciesProvider.current.destinations
 
     val selectCityScreen = destinations.find<SelectCityEntry>()
+    val weatherScreen = destinations.find<WeatherEntry>()
 
     Box(Modifier.fillMaxSize()) {
-        NavHost(navController = navController, startDestination = selectCityScreen.destination()) {
+        NavHost(navController = navController, startDestination = weatherScreen.destination()) {
 
             with(selectCityScreen) {
+                composable(navController, destinations)
+            }
+
+            with(weatherScreen) {
                 composable(navController, destinations)
             }
         }
