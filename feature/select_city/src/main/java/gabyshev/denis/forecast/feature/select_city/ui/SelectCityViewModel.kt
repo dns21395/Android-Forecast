@@ -2,10 +2,13 @@ package gabyshev.denis.forecast.feature.select_city.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import gabyshev.denis.forecast.core.common.FeatureScreens
 import gabyshev.denis.forecast.core.data.api.ResourceManagerApi
 import gabyshev.denis.forecast.core.data.api.entity.City
 import gabyshev.denis.forecast.core.navigation.Navigation
 import gabyshev.denis.forecast.core.navigation.NavigationCommand
+import gabyshev.denis.forecast.core.navigation.NavigationReplace
+import gabyshev.denis.forecast.core.navigation.RootNavigationQualifier
 import gabyshev.denis.forecast.feature.select_city.R
 import gabyshev.denis.forecast.feature.select_city.di.SelectCityNavigationQualifier
 import gabyshev.denis.forecast.feature.select_city.domain.entity.ScreenType
@@ -20,8 +23,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SelectCityViewModel @Inject constructor(
+    private val featureScreens: FeatureScreens,
     private val searchCitiesInteractor: SearchCitiesInteractor,
     private val resourceManagerApi: ResourceManagerApi,
+    @RootNavigationQualifier private val rootNavigation: Navigation,
     @SelectCityNavigationQualifier private val selectCityNavigation: Navigation
 ) : ViewModel() {
 
@@ -33,8 +38,10 @@ class SelectCityViewModel @Inject constructor(
     val toastMessage = _toastMessage.asSharedFlow()
 
     fun onCitySelected(city: City) {
-        searchCitiesInteractor.saveCity(city)
-        // TODO open next screen
+        viewModelScope.launch {
+            searchCitiesInteractor.saveCity(city)
+            rootNavigation.navigate(NavigationReplace(featureScreens.getWeatherScreen()))
+        }
     }
 
     fun onDoneButtonClicked(cityName: String) {

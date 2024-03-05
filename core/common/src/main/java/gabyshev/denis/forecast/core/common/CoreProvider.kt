@@ -5,6 +5,7 @@ import gabyshev.denis.forecast.core.navigation.RootNavigationQualifier
 
 interface CoreProvider {
 
+    fun featureScreens(): FeatureScreens
 
     fun provideDataApi(): DataApi
 

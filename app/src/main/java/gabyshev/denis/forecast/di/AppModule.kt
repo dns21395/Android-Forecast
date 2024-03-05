@@ -3,6 +3,8 @@ package gabyshev.denis.forecast.di
 import android.content.Context
 import dagger.Module
 import dagger.Provides
+import gabyshev.denis.forecast.FeatureScreensImpl
+import gabyshev.denis.forecast.core.common.FeatureScreens
 import gabyshev.denis.forecast.core.data.di.DataApi
 import gabyshev.denis.forecast.core.data.di.buildDataComponent
 import gabyshev.denis.forecast.core.navigation.Navigation
@@ -20,4 +22,8 @@ class AppModule(private val context: Context) {
     @Singleton
     @RootNavigationQualifier
     fun provideRootNavigation(): Navigation = Navigation()
+
+    @Provides
+    @Singleton
+    fun provideFeatureScreens(): FeatureScreens = FeatureScreensImpl()
 }
