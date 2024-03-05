@@ -1,17 +1,13 @@
 package gabyshev.denis.forecast.core.common
 
-import android.content.Context
 import gabyshev.denis.forecast.core.data.di.DataApi
-import gabyshev.denis.forecast.core.redux.Store
-import gabyshev.denis.forecast.core.store.AppState
+import gabyshev.denis.forecast.core.navigation.RootNavigationQualifier
 
 interface CoreProvider {
 
-    fun provideContext(): Context
-
-    fun appStore(): Store<AppState>
 
     fun provideDataApi(): DataApi
 
-    fun navigation(): Navigation
+    @RootNavigationQualifier
+    fun rootNavigation(): gabyshev.denis.forecast.core.navigation.Navigation
 }

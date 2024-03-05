@@ -16,6 +16,7 @@ dependencies {
             project(':core:common'),
             project(':core:data'),
             project(':core:di'),
+            project(':core:navigation'),
             project(':core:redux'),
             project(':core:store'),
 
