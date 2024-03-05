@@ -6,7 +6,7 @@ import gabyshev.denis.forecast.core.navigation.Navigation
 import gabyshev.denis.forecast.core.navigation.NavigationCommand
 import gabyshev.denis.forecast.core.navigation.NavigationReplace
 import gabyshev.denis.forecast.core.navigation.RootNavigationQualifier
-import gabyshev.denis.forecast.feature.select_city.ui.SelectCityStack
+import gabyshev.denis.forecast.feature.weather.WeatherStack
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,7 +19,7 @@ class MainViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            rootNavigation.navigate(NavigationReplace(SelectCityStack()))
+            rootNavigation.navigate(NavigationReplace(WeatherStack()))
         }
     }
 

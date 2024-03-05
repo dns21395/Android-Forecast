@@ -2,6 +2,8 @@ package gabyshev.denis.forecast.feature.weather
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -18,6 +20,7 @@ import gabyshev.denis.forecast.core.di.ComponentHolder
 import gabyshev.denis.forecast.core.di.daggerViewModel
 import gabyshev.denis.forecast.core.navigation.navigate
 import gabyshev.denis.forecast.feature.weather.di.DaggerWeatherComponent
+import gabyshev.denis.forecast.feature.weather.di.LocalWeatherDependenciesProvider
 import gabyshev.denis.forecast.feature.weather_day.R
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.parcelize.Parcelize
@@ -49,18 +52,34 @@ class WeatherStack(
             }
         }
 
-        Box() {
-            Image(
-                painter = painterResource(id = R.drawable.background_1),
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize(),
-                contentDescription = null,
-            )
-            Surface(
-                color = Color.Black.copy(alpha = 0.5f),
-                modifier = Modifier.fillMaxSize()
-            ) {}
-            TopScreenContent()
+        CompositionLocalProvider(LocalWeatherDependenciesProvider provides componentHolder.component) {
+            Screen { TopScreenContent() }
         }
     }
 }
+
+@Composable
+private fun Screen(
+    topScreenContent: @Composable () -> Unit
+) {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.background_1),
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize(),
+            contentDescription = null,
+        )
+        Surface(
+            color = Color.Black.copy(alpha = 0.5f),
+            modifier = Modifier.fillMaxSize()
+        ) {}
+        Column(
+            modifier = Modifier.fillMaxHeight(),
+        ) {
+            topScreenContent()
+        }
+    }
+}
+

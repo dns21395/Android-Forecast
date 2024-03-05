@@ -10,11 +10,12 @@ import gabyshev.denis.forecast.feature.weather.WeatherViewModel
     modules = [WeatherModule::class]
 )
 @PerFeature
-interface WeatherComponent {
+interface WeatherComponent : WeatherDependencies {
 
     @Component.Factory
     interface Builder {
         fun create(coreProvider: CoreProvider): WeatherComponent
     }
+
     fun viewModel(): WeatherViewModel
 }
