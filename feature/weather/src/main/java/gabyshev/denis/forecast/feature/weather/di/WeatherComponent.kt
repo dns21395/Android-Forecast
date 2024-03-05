@@ -12,11 +12,9 @@ import gabyshev.denis.forecast.feature.weather.WeatherViewModel
 @PerFeature
 interface WeatherComponent {
 
-    @Component.Builder
+    @Component.Factory
     interface Builder {
-        fun coreProvider(coreProvider: CoreProvider): Builder
-        fun build(): WeatherComponent
+        fun create(coreProvider: CoreProvider): WeatherComponent
     }
-
     fun viewModel(): WeatherViewModel
 }

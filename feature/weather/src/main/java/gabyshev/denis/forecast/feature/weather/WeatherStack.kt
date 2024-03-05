@@ -1,94 +1,42 @@
 package gabyshev.denis.forecast.feature.weather
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.github.terrakok.modo.Screen
-import com.github.terrakok.modo.ScreenKey
-import com.github.terrakok.modo.generateScreenKey
-import com.github.terrakok.modo.multiscreen.MultiScreen
-import com.github.terrakok.modo.multiscreen.MultiScreenNavModel
-import com.github.terrakok.modo.multiscreen.selectContainer
+import androidx.compose.runtime.LaunchedEffect
 import com.github.terrakok.modo.stack.StackNavModel
 import com.github.terrakok.modo.stack.StackScreen
-import gabyshev.denis.forecast.weather_day.WeekDay
-import gabyshev.denis.forecast.weather_week.ui.WeekScreen
+import gabyshev.denis.forecast.core.common.LocalCoreProvider
+import gabyshev.denis.forecast.core.di.ComponentHolder
+import gabyshev.denis.forecast.core.di.daggerViewModel
+import gabyshev.denis.forecast.core.navigation.navigate
+import gabyshev.denis.forecast.feature.weather.di.DaggerWeatherComponent
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.parcelize.Parcelize
+
+private const val KEY_COMPONENT = "KEY_WEATHER_COMPONENT"
+private const val KEY_VIEWMODEL = "KEY_WEATHER_VIEWMODEL"
 
 @Parcelize
 class WeatherStack(
-    private val stackNavModel: MultiScreenNavModel = MultiScreenNavModel(
-        containers = listOf(
-            SampleStack(Weather()),
-            SampleStack(Weather2())
-        ),
-        selected = 0
-    ),
-) : MultiScreen(stackNavModel) {
-
-    @Composable
-    override fun Content() {
-        Column(modifier = Modifier.fillMaxSize()) {
-            Box(modifier = Modifier.padding(top = 16.dp).weight(1f)) {
-                Row {
-                    for ((pos, container) in navigationState.containers.withIndex()) {
-                        if (pos == navigationState.selected) {
-                            Box(modifier = Modifier.weight(1f)) {
-                                // внутри вызывается используется SaveableStateProvider с одинаковым ключом для экрана
-                                Content(container)
-                            }
-                        }
-                    }
-                }
-            }
-            Row {
-                Button(onClick = { selectContainer(0)}) {
-                    Text("Day")
-                }
-                Button(onClick = { selectContainer(1) }) {
-                    Text("Weather")
-                }
-            }
-        }
-    }
-
-}
-
-@Parcelize
-class SampleStack(
     private val stackNavModel: StackNavModel,
 ) : StackScreen(stackNavModel) {
 
-    constructor(rootScreen: Screen) : this(StackNavModel(rootScreen))
+    constructor() : this(StackNavModel(emptyList()))
 
     @Composable
     override fun Content() {
-        TopScreenContent()
-    }
-}
+        val coreProvider = LocalCoreProvider.current
+        val componentHolder = daggerViewModel(key = "${stackNavModel.screenKey}$KEY_COMPONENT") {
+            ComponentHolder(DaggerWeatherComponent.factory().create(coreProvider))
+        }
+        val viewModel: WeatherViewModel =
+            daggerViewModel(key = "${stackNavModel.screenKey}$KEY_VIEWMODEL") {
+                componentHolder.component.viewModel()
+            }
 
-
-@Parcelize
-class Weather(
-    override val screenKey: ScreenKey = generateScreenKey(),
-) : Screen {
-
-    @Composable
-    override fun Content() {
-        WeekDay()
-    }
-}
-
-@Parcelize
-class Weather2(
-    override val screenKey: ScreenKey = generateScreenKey(),
-) : Screen {
-
-    @Composable
-    override fun Content() {
-        WeekScreen()
+        LaunchedEffect(Unit) {
+            viewModel.navigationCommands.collectLatest {
+                navigate(it)
+            }
+        }
     }
 }

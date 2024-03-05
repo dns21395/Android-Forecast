@@ -17,8 +17,6 @@ dependencies {
             project(':core:common'),
             project(':core:data'),
             project(':core:di'),
-            project(':core:redux'),
-            project(':core:store'),
             project(':core:navigation'),
             project(':core:ui'),
             project(':feature:weather_day'),
