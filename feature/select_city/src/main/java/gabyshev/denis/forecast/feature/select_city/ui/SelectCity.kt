@@ -1,13 +1,14 @@
 package gabyshev.denis.forecast.feature.select_city.ui
 
+import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -26,7 +27,9 @@ fun SelectCityScreen() {
     val component = DaggerSelectCityComponent.builder().coreProvider(coreProvider).build()
     val viewModel: SelectCityViewModel = daggerViewModel { component.selectCityViewModel() }
 
-    val state = viewModel.uiState.collectAsState(initial = SelectCityState())
+    val state = viewModel.state.collectAsState(initial = SelectCityState())
+
+    ShowToastEvent(viewModel = viewModel)
 
     Box(Modifier.fillMaxSize()) {
         Image(
@@ -56,5 +59,22 @@ fun SelectCityScreen() {
         ) {
             FoundCities(state.value.cities) { viewModel.onCitySelected(it) }
         }
+    }
+}
+
+@Composable
+fun ShowToastEvent(viewModel: SelectCityViewModel) {
+    val context = LocalContext.current
+
+    LaunchedEffect(Unit) {
+        viewModel
+            .toastMessage
+            .collect { message ->
+                Toast.makeText(
+                    context,
+                    message,
+                    Toast.LENGTH_SHORT,
+                ).show()
+            }
     }
 }
