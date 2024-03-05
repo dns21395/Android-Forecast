@@ -2,6 +2,7 @@ include(
         ':app',
         ':core:common',
         ':core:data',
+        ':core:navigation',
         ':core:di',
         ':core:redux',
         ':core:store',
