@@ -1,6 +1,7 @@
 package gabyshev.denis.forecast.feature.weather
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import com.github.terrakok.modo.stack.StackNavModel
 import com.github.terrakok.modo.stack.StackScreen
@@ -38,5 +39,7 @@ class WeatherStack(
                 navigate(it)
             }
         }
+
+        TopScreenContent()
     }
 }
