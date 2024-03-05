@@ -12,10 +12,9 @@ import gabyshev.denis.forecast.feature.select_city.ui.SelectCityViewModel
 @PerFeature
 interface SelectCityComponent {
 
-    @Component.Builder
+    @Component.Factory
     interface Builder {
-        fun coreProvider(coreProvider: CoreProvider): Builder
-        fun build(): SelectCityComponent
+        fun create(coreProvider: CoreProvider): SelectCityComponent
     }
 
     fun selectCityViewModel(): SelectCityViewModel

@@ -7,7 +7,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.github.terrakok.modo.stack.StackNavModel
 import com.github.terrakok.modo.stack.StackScreen
 import gabyshev.denis.forecast.core.common.CoreProvider
-import gabyshev.denis.forecast.core.common.LocalRootDependenciesProvider
+import gabyshev.denis.forecast.core.common.LocalCoreProvider
 import gabyshev.denis.forecast.core.di.ComponentHolder
 import gabyshev.denis.forecast.core.di.daggerViewModel
 import gabyshev.denis.forecast.core.navigation.navigate
@@ -46,7 +46,7 @@ class MainStackScreen(
         }
 
         CompositionLocalProvider(
-            LocalRootDependenciesProvider provides componentHolder.component as CoreProvider
+            LocalCoreProvider provides componentHolder.component as CoreProvider
         ) {
             TopScreenContent()
         }

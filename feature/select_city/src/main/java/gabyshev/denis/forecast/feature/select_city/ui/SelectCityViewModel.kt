@@ -4,10 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import gabyshev.denis.forecast.core.data.api.ResourceManagerApi
 import gabyshev.denis.forecast.core.data.api.entity.City
+import gabyshev.denis.forecast.core.navigation.Navigation
+import gabyshev.denis.forecast.core.navigation.NavigationCommand
 import gabyshev.denis.forecast.feature.select_city.R
+import gabyshev.denis.forecast.feature.select_city.di.SelectCityNavigationQualifier
 import gabyshev.denis.forecast.feature.select_city.domain.entity.ScreenType
 import gabyshev.denis.forecast.feature.select_city.domain.interactor.SearchCitiesInteractor
 import gabyshev.denis.forecast.feature.select_city.store.SelectCityState
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -17,8 +21,11 @@ import javax.inject.Inject
 
 class SelectCityViewModel @Inject constructor(
     private val searchCitiesInteractor: SearchCitiesInteractor,
-    private val resourceManagerApi: ResourceManagerApi
+    private val resourceManagerApi: ResourceManagerApi,
+    @SelectCityNavigationQualifier private val selectCityNavigation: Navigation
 ) : ViewModel() {
+
+    val navigationCommands: Flow<NavigationCommand> = selectCityNavigation.commandsFlow
 
     val state = MutableStateFlow(SelectCityState())
 

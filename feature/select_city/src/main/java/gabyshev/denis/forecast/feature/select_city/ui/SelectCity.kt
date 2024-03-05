@@ -14,50 +14,79 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import com.github.terrakok.modo.stack.StackNavModel
+import com.github.terrakok.modo.stack.StackScreen
+import gabyshev.denis.forecast.core.common.LocalCoreProvider
 import gabyshev.denis.forecast.core.common.getCoreProvider
+import gabyshev.denis.forecast.core.di.ComponentHolder
 import gabyshev.denis.forecast.core.di.daggerViewModel
+import gabyshev.denis.forecast.core.navigation.navigate
 import gabyshev.denis.forecast.feature.select_city.R
 import gabyshev.denis.forecast.feature.select_city.di.DaggerSelectCityComponent
 import gabyshev.denis.forecast.feature.select_city.domain.entity.ScreenType
 import gabyshev.denis.forecast.feature.select_city.store.SelectCityState
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.parcelize.Parcelize
 
-@Composable
-fun SelectCityScreen() {
-    val coreProvider = LocalContext.current.getCoreProvider()
-    val component = DaggerSelectCityComponent.builder().coreProvider(coreProvider).build()
-    val viewModel: SelectCityViewModel = daggerViewModel { component.selectCityViewModel() }
+private const val KEY_COMPONENT = "KEY_SELECT_CITY_COMPONENT"
+private const val KEY_VIEWMODEL = "KEY_SELECT_CITY_VIEWMODEL"
 
-    val state = viewModel.state.collectAsState(initial = SelectCityState())
+@Parcelize
+class SelectCityStack(
+    private val stackNavModel: StackNavModel,
+) : StackScreen(stackNavModel) {
+    constructor() : this(StackNavModel(emptyList()))
 
-    ShowToastEvent(viewModel = viewModel)
+    @Composable
+    override fun Content() {
+        val coreProvider = LocalCoreProvider.current
+        val componentHolder = daggerViewModel(key = "${stackNavModel.screenKey}$KEY_COMPONENT") {
+            ComponentHolder(DaggerSelectCityComponent.factory().create(coreProvider))
+        }
+        val viewModel: SelectCityViewModel =
+            daggerViewModel(key = "${stackNavModel.screenKey}$KEY_VIEWMODEL") {
+                componentHolder.component.selectCityViewModel()
+            }
 
-    Box(Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.city_background),
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize(),
-            contentDescription = null
-        )
 
-        AnimatedVisibility(
-            visible = state.value.currentScreen == ScreenType.SEARCH_CITY,
-            exit = slideOutHorizontally(
-                targetOffsetX = { fullWidth -> -fullWidth }
-            )
-        ) {
-            SearchCity(viewModel = viewModel)
+        ShowToastEvent(viewModel = viewModel)
+
+        LaunchedEffect(Unit) {
+            viewModel.navigationCommands.collectLatest {
+                navigate(it)
+            }
         }
 
-        AnimatedVisibility(
-            visible = state.value.currentScreen == ScreenType.FOUND_CITIES,
-            enter = slideInHorizontally(
-                initialOffsetX = { fullWidth -> fullWidth * 2 }
-            ),
-            exit = slideOutHorizontally(
-                targetOffsetX = { fullWidth -> fullWidth * 2 }
+        val state = viewModel.state.collectAsState(initial = SelectCityState())
+
+        Box(Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(id = R.drawable.city_background),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize(),
+                contentDescription = null
             )
-        ) {
-            FoundCities(state.value.cities) { viewModel.onCitySelected(it) }
+
+            AnimatedVisibility(
+                visible = state.value.currentScreen == ScreenType.SEARCH_CITY,
+                exit = slideOutHorizontally(
+                    targetOffsetX = { fullWidth -> -fullWidth }
+                )
+            ) {
+                SearchCity(viewModel = viewModel)
+            }
+
+            AnimatedVisibility(
+                visible = state.value.currentScreen == ScreenType.FOUND_CITIES,
+                enter = slideInHorizontally(
+                    initialOffsetX = { fullWidth -> fullWidth * 2 }
+                ),
+                exit = slideOutHorizontally(
+                    targetOffsetX = { fullWidth -> fullWidth * 2 }
+                )
+            ) {
+                FoundCities(state.value.cities) { viewModel.onCitySelected(it) }
+            }
         }
     }
 }
