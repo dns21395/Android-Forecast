@@ -43,16 +43,6 @@ class WeekScreen(
 fun WeekDay() {
     Column {
         Box(Modifier.fillMaxSize()) {
-            Image(
-                painter = painterResource(id = R.drawable.background_1),
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize(),
-                contentDescription = null,
-            )
-            Surface(
-                color = Color.Black.copy(alpha = 0.5f),
-                modifier = Modifier.fillMaxSize()
-            ) {}
             Column(
                 modifier = Modifier
                     .fillMaxSize(),

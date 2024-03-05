@@ -1,8 +1,16 @@
 package gabyshev.denis.forecast.feature.weather
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import com.github.terrakok.modo.stack.StackNavModel
 import com.github.terrakok.modo.stack.StackScreen
 import gabyshev.denis.forecast.core.common.LocalCoreProvider
@@ -10,6 +18,7 @@ import gabyshev.denis.forecast.core.di.ComponentHolder
 import gabyshev.denis.forecast.core.di.daggerViewModel
 import gabyshev.denis.forecast.core.navigation.navigate
 import gabyshev.denis.forecast.feature.weather.di.DaggerWeatherComponent
+import gabyshev.denis.forecast.feature.weather_day.R
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.parcelize.Parcelize
 
@@ -40,6 +49,18 @@ class WeatherStack(
             }
         }
 
-        TopScreenContent()
+        Box() {
+            Image(
+                painter = painterResource(id = R.drawable.background_1),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize(),
+                contentDescription = null,
+            )
+            Surface(
+                color = Color.Black.copy(alpha = 0.5f),
+                modifier = Modifier.fillMaxSize()
+            ) {}
+            TopScreenContent()
+        }
     }
 }
