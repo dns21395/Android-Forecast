@@ -6,7 +6,7 @@ import gabyshev.denis.forecast.core.navigation.Navigation
 import gabyshev.denis.forecast.core.navigation.NavigationCommand
 import gabyshev.denis.forecast.core.navigation.NavigationReplace
 import gabyshev.denis.forecast.feature.weather.di.WeatherNavigationQualifier
-import gabyshev.denis.forecast.weather_day.WeekScreen
+import gabyshev.denis.forecast.weather_day.ui.WeekScreen
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject

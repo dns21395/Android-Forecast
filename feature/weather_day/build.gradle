@@ -14,6 +14,10 @@ android {
 
 dependencies {
     implementation(
+            project(':core:common'),
+            project(':core:data'),
+            project(':core:di'),
+            project(':core:navigation'),
             project(':core:ui'),
 
             deps.compose.ui,
@@ -22,6 +26,8 @@ dependencies {
             deps.compose.ui_tooling_preview,
             deps.dagger.dagger,
             deps.modo.modo,
+            deps.lifecycle.viewmodel,
+            deps.lifecycle.viewmodel_compose,
     )
 
     kapt(
