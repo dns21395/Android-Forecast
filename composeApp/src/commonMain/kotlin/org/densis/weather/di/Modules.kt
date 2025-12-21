@@ -1,22 +1,25 @@
 package org.densis.weather.di
 
-import androidx.lifecycle.viewmodel.compose.viewModel
+import money.vivid.elmslie.core.store.ElmStore
 import money.vivid.elmslie.core.store.NoOpActor
 import org.densis.weather.select_city.SelectCityViewModel
+import org.densis.weather.select_city.presentation.SelectCityCommand
+import org.densis.weather.select_city.presentation.SelectCityEffect
+import org.densis.weather.select_city.presentation.SelectCityEvent
 import org.densis.weather.select_city.presentation.SelectCityReducer
 import org.densis.weather.select_city.presentation.SelectCityState
 import org.densis.weather.select_city.presentation.SelectCityStore
-import org.koin.core.module.dsl.viewModelOf
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val sharedModule = module {
     single {
-        fun createStore() = SelectCityStore(
+        SelectCityStore(
             initialState = SelectCityState(),
             reducer = SelectCityReducer,
             actor = NoOpActor()
-        ).start()
+        )
     }
 
-    viewModelOf(::SelectCityViewModel)
+    viewModel { SelectCityViewModel(get()) }
 }

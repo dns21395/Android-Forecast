@@ -11,7 +11,16 @@ val SelectCityReducer = object :
             is SelectCityEvent.OnInitScreen -> {
                 commands { +SelectCityCommand.GetCities }
             }
+
+            is SelectCityEvent.OnInputText -> {
+                state { copy(text = event.text) }
+            }
+
+            is SelectCityEvent.OnShowToast -> {
+                state {
+                    copy(yourText = "your entetered this text \"${state.text}\"")
+                }
+            }
         }
     }
-
 }
