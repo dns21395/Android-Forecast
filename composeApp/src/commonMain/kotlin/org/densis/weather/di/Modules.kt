@@ -1,9 +1,12 @@
 package org.densis.weather.di
 
+import androidx.lifecycle.viewmodel.compose.viewModel
 import money.vivid.elmslie.core.store.NoOpActor
+import org.densis.weather.select_city.SelectCityViewModel
 import org.densis.weather.select_city.presentation.SelectCityReducer
 import org.densis.weather.select_city.presentation.SelectCityState
 import org.densis.weather.select_city.presentation.SelectCityStore
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 val sharedModule = module {
@@ -14,4 +17,6 @@ val sharedModule = module {
             actor = NoOpActor()
         ).start()
     }
+
+    viewModelOf(::SelectCityViewModel)
 }
