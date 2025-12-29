@@ -5,14 +5,20 @@ import org.densis.weather.select_city.SelectCityViewModel
 import org.densis.weather.select_city.presentation.SelectCityReducer
 import org.densis.weather.select_city.presentation.SelectCityState
 import org.densis.weather.select_city.presentation.SelectCityStore
+import org.densis.weather.weather.WeatherViewModel
+import org.densis.weather.weather.presentation.WeatherReducer
+import org.densis.weather.weather.presentation.WeatherState
+import org.densis.weather.weather.presentation.WeatherStore
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.viewModel
+import org.koin.core.module.dsl.viewModelOf
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 expect val platformModule: Module
 
 val sharedModule = module {
-    single {
+    factory(named("select_city")) {
         SelectCityStore(
             initialState = SelectCityState(),
             reducer = SelectCityReducer,
@@ -20,5 +26,14 @@ val sharedModule = module {
         )
     }
 
-    viewModel { SelectCityViewModel(get(), get(), get()) }
+    factory(named("weather")) {
+        WeatherStore(
+            initialState = WeatherState(),
+            reducer = WeatherReducer,
+            actor = NoOpActor()
+        )
+    }
+
+    viewModel { SelectCityViewModel(get(named("select_city")), get()) }
+    viewModel { WeatherViewModel(get(named("weather")), get()) }
 }

@@ -51,7 +51,7 @@ fun SelectCity(
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(
-            onClick = { onEvent(SelectCityEvent.OnShowToast) },
+            onClick = { onEvent(SelectCityEvent.OnSelectButtonClicked) },
             modifier = Modifier.align(Alignment.End).padding(8.dp)
         ) {
             Text("search", style = MaterialTheme.typography.titleLarge)

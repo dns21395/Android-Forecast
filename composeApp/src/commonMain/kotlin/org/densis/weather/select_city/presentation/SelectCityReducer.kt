@@ -21,6 +21,10 @@ val SelectCityReducer = object :
                     copy(yourText = "your entetered this text \"${state.text}\"")
                 }
             }
+
+            is SelectCityEvent.OnSelectButtonClicked -> {
+                effects { +SelectCityEffect.OpenWeatherScreen }
+            }
         }
     }
 }

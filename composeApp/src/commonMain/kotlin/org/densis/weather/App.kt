@@ -14,13 +14,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.navigation
 import org.densis.weather.select_city.SelectCity
 import org.densis.weather.select_city.SelectCityViewModel
 import org.densis.weather.select_city.presentation.SelectCityEffect
+import org.densis.weather.weather.Weather
+import org.densis.weather.weather.WeatherViewModel
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
@@ -42,19 +43,17 @@ fun App() {
             ) {
                 composable<Route.SelectCity> {
                     val viewModel = koinViewModel<SelectCityViewModel>()
-                    val state by viewModel.state.collectAsStateWithLifecycle()
+                    val stateSelectCity by viewModel.state.collectAsStateWithLifecycle()
+
+                    val painter = painterResource(Res.drawable.city_background)
 
                     LaunchedEffect(Unit) {
                         viewModel.effects.collect { effect ->
                             when (effect) {
-                                SelectCityEffect.ShowToast -> {
-
-                                }
+                                SelectCityEffect.OpenWeatherScreen -> navController.navigate(Route.Weather)
                             }
                         }
                     }
-
-                    val painter = painterResource(Res.drawable.city_background)
 
                     Box(Modifier.fillMaxSize()) {
                         Image(
@@ -65,7 +64,22 @@ fun App() {
                         )
 
                         SelectCity(
-                            modifier = Modifier.fillMaxSize().statusBarsPadding().padding(horizontal = 16.dp),
+                            modifier = Modifier.fillMaxSize().statusBarsPadding()
+                                .padding(horizontal = 16.dp),
+                            state = stateSelectCity,
+                            onEvent = { viewModel.onEvent(it) }
+                        )
+                    }
+                }
+
+                composable<Route.Weather> {
+                    val viewModel = koinViewModel<WeatherViewModel>()
+                    val state by viewModel.state.collectAsStateWithLifecycle()
+
+                    Box(Modifier.fillMaxSize()) {
+                        Weather(
+                            modifier = Modifier.fillMaxSize().statusBarsPadding()
+                                .padding(horizontal = 16.dp),
                             state = state,
                             onEvent = { viewModel.onEvent(it) }
                         )
