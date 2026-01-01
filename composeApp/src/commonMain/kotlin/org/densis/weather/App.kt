@@ -12,11 +12,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.NavHost
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.navigation
+import androidx.navigation.compose.rememberNavController
 import org.densis.weather.select_city.SelectCity
 import org.densis.weather.select_city.SelectCityViewModel
 import org.densis.weather.select_city.presentation.SelectCityEffect
@@ -76,14 +76,15 @@ fun App() {
                     val viewModel = koinViewModel<WeatherViewModel>()
                     val state by viewModel.state.collectAsStateWithLifecycle()
 
-                    Box(Modifier.fillMaxSize()) {
-                        Weather(
-                            modifier = Modifier.fillMaxSize().statusBarsPadding()
-                                .padding(horizontal = 16.dp),
-                            state = state,
-                            onEvent = { viewModel.onEvent(it) }
-                        )
-                    }
+                    Weather(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .statusBarsPadding()
+                            .padding(horizontal = 16.dp),
+                        state = state,
+                        onEvent = { viewModel.onEvent(it) }
+                    )
+
                 }
             }
         }
