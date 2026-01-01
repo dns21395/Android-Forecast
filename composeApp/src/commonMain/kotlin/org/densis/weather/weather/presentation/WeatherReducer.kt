@@ -7,6 +7,16 @@ val WeatherReducer =
         override fun StateReducer<WeatherEvent, WeatherState, WeatherEffect, WeatherCommand>.Result.reduce(
             event: WeatherEvent
         ) {
+            when (event) {
+                is WeatherEvent.InitScreen -> {
+                    commands { +WeatherCommand.GetCityName }
+                }
 
+                is WeatherEvent.OnReceivedCityName -> {
+                    state { copy(cityName = event.cityName) }
+                }
+
+                else -> {}
+            }
         }
     }

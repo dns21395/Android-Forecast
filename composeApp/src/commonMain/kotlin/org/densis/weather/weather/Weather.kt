@@ -2,6 +2,7 @@ package org.densis.weather.weather
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,10 +15,14 @@ fun Weather(
     state: WeatherState,
     onEvent: (WeatherEvent) -> Unit,
 ) {
-    Column(
+    LazyColumn(
         modifier = modifier,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(state.cityName)
+        item {
+            Text(
+                text = state.cityName
+            )
+        }
     }
 }

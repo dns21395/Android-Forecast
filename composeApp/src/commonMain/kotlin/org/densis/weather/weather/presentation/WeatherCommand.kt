@@ -1,4 +1,5 @@
 package org.densis.weather.weather.presentation
 
-class WeatherCommand {
+sealed class WeatherCommand {
+    object GetCityName : WeatherCommand()
 }
