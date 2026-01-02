@@ -1,9 +1,9 @@
-# Forecast (Kotlin Multiplatform app)
+## Forecast (Kotlin Multiplatform app)
 A kotlin multiplatform app that built on elmslie architecture
 
 <p align="center"><img src="https://raw.githubusercontent.com/dns21395/Android-Forecast/refs/heads/master/ReadmeFiles/intro.png" width="360" /></p>
 
-# Used Resources
+## Used Resources
 
 | Resource     | Link                                                                        |
 |--------------|-----------------------------------------------------------------------------|
@@ -11,10 +11,10 @@ A kotlin multiplatform app that built on elmslie architecture
 | Architecture | [elmslie](https://github.com/vivid-money/elmslie)                           |
 | Backgrounds  | [Pexels](https://www.pexels.com)                                            |
 
-# Screens
+## Screens
 -----
 
-Select City   |  Forecast
-:-------------------------:|:-------------------------:
-![](https://raw.githubusercontent.com/dns21395/Android-Forecast/refs/heads/master/ReadmeFiles/screen1.png)  |  ![](https://raw.githubusercontent.com/dns21395/Android-Forecast/refs/heads/master/ReadmeFiles/screen2.png)
+|                                                Select City                                                 |                                                  Forecast                                                  |
+|:----------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:|
+| ![](https://raw.githubusercontent.com/dns21395/Android-Forecast/refs/heads/master/ReadmeFiles/screen1.png) | ![](https://raw.githubusercontent.com/dns21395/Android-Forecast/refs/heads/master/ReadmeFiles/screen2.png) |
 
