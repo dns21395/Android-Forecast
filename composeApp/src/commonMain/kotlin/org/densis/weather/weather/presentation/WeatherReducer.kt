@@ -9,7 +9,9 @@ val WeatherReducer =
         ) {
             when (event) {
                 is WeatherEvent.InitScreen -> {
-                    commands { +WeatherCommand.GetCityName }
+                    commands {
+                        +WeatherCommand.GetCityName
+                    }
                 }
 
                 is WeatherEvent.OnReceivedCityName -> {

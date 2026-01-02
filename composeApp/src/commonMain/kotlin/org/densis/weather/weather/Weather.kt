@@ -50,6 +50,13 @@ fun Weather(
                     color = Color.White
                 )
             }
+            item {
+                Text(
+                    text = "32",
+                    style = MaterialTheme.typography.headlineLarge,
+                    color = Color.White
+                )
+            }
         }
     }
 }
