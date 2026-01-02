@@ -18,8 +18,10 @@ import androidx.compose.ui.unit.dp
 import org.densis.weather.select_city.presentation.SelectCityEvent
 import org.densis.weather.select_city.presentation.SelectCityState
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import weather.composeapp.generated.resources.Res
 import weather.composeapp.generated.resources.magnify
+import weather.composeapp.generated.resources.select_city_hint
 
 @Composable
 fun SelectCity(
@@ -36,7 +38,7 @@ fun SelectCity(
             onValueChange = { onEvent(SelectCityEvent.OnInputText(it)) },
             placeholder = {
                 Text(
-                    "Enter a city name",
+                    text = stringResource(Res.string.select_city_hint),
                     style = MaterialTheme.typography.titleLarge
                 )
             },
