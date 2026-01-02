@@ -42,13 +42,24 @@ class WeatherRepository(
     private fun getWeeklyForecast(): List<WeatherForecastDay> {
         val list = arrayListOf<WeatherForecastDay>()
 
+        val daysName = listOf(
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+        )
+
         for (i in 0 until 7) {
-            val day = "${Random.nextInt(25) - Random.nextInt(25)}°"
-            val night = "${Random.nextInt(25) - Random.nextInt(25)}°"
+            val day = "${Random.nextInt(25) - Random.nextInt(10)}°"
+            val night = "${Random.nextInt(25) - Random.nextInt(10)}°"
 
             list.add(
                 WeatherForecastDay(
                     imageType = WeatherImageType.entries.toTypedArray().random(),
+                    dayName = daysName[i],
                     temperature = "$day / $night",
                 )
             )
@@ -59,16 +70,16 @@ class WeatherRepository(
 
     private fun getCurrentWeather(): List<Pair<WeatherImageType, String>> {
         return listOf(
-            WeatherImageType.CLEAR_SKY to "CLEAR SKY",
-            WeatherImageType.CLEAR_SKY_NIGHT to "CLEAR SKY",
-            WeatherImageType.FEW_CLOUDS to "FEW CLOUDS",
-            WeatherImageType.FEW_CLOUDS_NIGHT to "FEW CLOUDS",
-            WeatherImageType.RAIN to "RAIN",
-            WeatherImageType.RAIN_NIGHT to "RAIN",
-            WeatherImageType.MIST to "MIST",
-            WeatherImageType.SHOWER_RAIN to "SHOWER RAIN",
-            WeatherImageType.SNOW to "SNOW",
-            WeatherImageType.THUNDERSTORM to "THUNDERSTORM",
+            WeatherImageType.CLEAR_SKY to "Clear Sky",
+            WeatherImageType.CLEAR_SKY_NIGHT to "Clear Sky",
+            WeatherImageType.FEW_CLOUDS to "Few Clouds",
+            WeatherImageType.FEW_CLOUDS_NIGHT to "Few Clouds",
+            WeatherImageType.RAIN to "Rain",
+            WeatherImageType.RAIN_NIGHT to "Rain",
+            WeatherImageType.MIST to "Mist",
+            WeatherImageType.SHOWER_RAIN to "Shower Rain",
+            WeatherImageType.SNOW to "Snow",
+            WeatherImageType.THUNDERSTORM to "Thunderstorm",
         )
     }
 }
