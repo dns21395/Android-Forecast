@@ -32,7 +32,7 @@ fun SelectCity(
         verticalArrangement = Arrangement.Center
     ) {
         TextField(
-            value = state.text,
+            value = state.cityName,
             onValueChange = { onEvent(SelectCityEvent.OnInputText(it)) },
             placeholder = {
                 Text(

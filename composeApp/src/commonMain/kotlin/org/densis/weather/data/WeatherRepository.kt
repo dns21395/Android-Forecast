@@ -1,4 +1,4 @@
-package org.densis.weather.weather.data.repository
+package org.densis.weather.data
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -10,13 +10,20 @@ import org.densis.weather.weather.domain.entity.WeatherForecastDay
 import org.densis.weather.weather.domain.entity.WeatherImageType
 import kotlin.random.Random
 
-
 class WeatherRepository(
     val dataStore: DataStore<Preferences>,
 ) {
 
     companion object {
         private val NAME_KEY = stringPreferencesKey(("city"))
+    }
+
+    suspend fun setCity(cityName: String) {
+        dataStore.updateData {
+            it.toMutablePreferences().also { preferences ->
+                preferences[NAME_KEY] = cityName
+            }
+        }
     }
 
     suspend fun getWeather(): Weather {
@@ -53,8 +60,8 @@ class WeatherRepository(
         )
 
         for (i in 0 until 7) {
-            val day = "${Random.nextInt(25) - Random.nextInt(10)}°"
-            val night = "${Random.nextInt(25) - Random.nextInt(10)}°"
+            val day = "${Random.Default.nextInt(25) - Random.Default.nextInt(10)}°"
+            val night = "${Random.Default.nextInt(25) - Random.Default.nextInt(10)}°"
 
             list.add(
                 WeatherForecastDay(

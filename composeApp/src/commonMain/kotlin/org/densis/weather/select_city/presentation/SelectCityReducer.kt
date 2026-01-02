@@ -8,21 +8,15 @@ val SelectCityReducer = object :
         event: SelectCityEvent
     ) {
         when (event) {
-            is SelectCityEvent.OnInitScreen -> {
-                commands { +SelectCityCommand.GetCities }
-            }
-
             is SelectCityEvent.OnInputText -> {
-                state { copy(text = event.text) }
-            }
-
-            is SelectCityEvent.OnShowToast -> {
-                state {
-                    copy(yourText = "your entetered this text \"${state.text}\"")
-                }
+                state { copy(cityName = event.text) }
             }
 
             is SelectCityEvent.OnSelectButtonClicked -> {
+                commands { +SelectCityCommand.SetCurrentCity(state.cityName) }
+            }
+
+            is SelectCityEvent.OnSelectFinished -> {
                 effects { +SelectCityEffect.OpenWeatherScreen }
             }
         }

@@ -1,6 +1,6 @@
 package org.densis.weather.weather.domain.usecase
 
-import org.densis.weather.weather.data.repository.WeatherRepository
+import org.densis.weather.data.WeatherRepository
 import org.densis.weather.weather.domain.entity.Weather
 
 class GetWeatherUseCase(

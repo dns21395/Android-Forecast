@@ -1,12 +1,13 @@
 package org.densis.weather.di
 
-import money.vivid.elmslie.core.store.NoOpActor
+import org.densis.weather.data.WeatherRepository
 import org.densis.weather.select_city.SelectCityViewModel
+import org.densis.weather.select_city.domain.SetCurrentCityUseCase
+import org.densis.weather.select_city.presentation.SelectCityActor
 import org.densis.weather.select_city.presentation.SelectCityReducer
 import org.densis.weather.select_city.presentation.SelectCityState
 import org.densis.weather.select_city.presentation.SelectCityStore
 import org.densis.weather.weather.WeatherViewModel
-import org.densis.weather.weather.data.repository.WeatherRepository
 import org.densis.weather.weather.domain.usecase.GetWeatherUseCase
 import org.densis.weather.weather.presentation.WeatherActor
 import org.densis.weather.weather.presentation.WeatherReducer
@@ -20,15 +21,17 @@ import org.koin.dsl.module
 expect val platformModule: Module
 
 val sharedModule = module {
-    single { WeatherRepository(get()) }
+    factory { WeatherRepository(get()) }
 
-    single { GetWeatherUseCase(get()) }
+    factory { GetWeatherUseCase(get()) }
+
+    factory { SetCurrentCityUseCase(get()) }
 
     factory(named("select_city")) {
         SelectCityStore(
             initialState = SelectCityState(),
             reducer = SelectCityReducer,
-            actor = NoOpActor()
+            actor = SelectCityActor(get())
         )
     }
 
@@ -41,6 +44,6 @@ val sharedModule = module {
     }
 
 
-    viewModel { SelectCityViewModel(get(named("select_city")), get()) }
+    viewModel { SelectCityViewModel(get(named("select_city"))) }
     viewModel { WeatherViewModel(get(named("weather"))) }
 }
