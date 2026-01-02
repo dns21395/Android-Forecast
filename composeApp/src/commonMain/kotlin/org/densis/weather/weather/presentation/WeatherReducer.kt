@@ -10,12 +10,21 @@ val WeatherReducer =
             when (event) {
                 is WeatherEvent.InitScreen -> {
                     commands {
-                        +WeatherCommand.GetCityName
+                        +WeatherCommand.GetWeather
                     }
                 }
 
-                is WeatherEvent.OnReceivedCityName -> {
-                    state { copy(cityName = event.cityName) }
+                is WeatherEvent.OnReceivedWeather -> {
+                    val weather = event.weather
+                    state {
+                        copy(
+                            cityName = weather.cityName,
+                            temperature = weather.temperature,
+                            imageType = weather.imageType,
+                            description = weather.description,
+                            forecast = weather.weeklyForecast,
+                        )
+                    }
                 }
 
                 else -> {}

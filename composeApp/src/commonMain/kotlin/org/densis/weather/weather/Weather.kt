@@ -52,7 +52,7 @@ fun Weather(
             }
             item {
                 Text(
-                    text = "32",
+                    text = state.temperature ,
                     style = MaterialTheme.typography.headlineLarge,
                     color = Color.White
                 )
