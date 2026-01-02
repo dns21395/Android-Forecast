@@ -1,7 +1,0 @@
-apply from: "$rootDir/common.gradle"
-
-dependencies {
-    implementation(
-            deps.coroutines.coroutines
-    )
-}
