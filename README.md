@@ -1,4 +1,4 @@
-## Forecast (Kotlin Multiplatform app)
+## Forecast (Kotlin Multiplatform, KMP)
 A kotlin multiplatform app that built on elmslie architecture
 
 <p align="center"><img src="https://raw.githubusercontent.com/dns21395/Android-Forecast/refs/heads/master/ReadmeFiles/intro.png" width="360" /></p>
